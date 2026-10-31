@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Isikrini sasekhaya</string>
+    <string name="menu_widget">Engeza iwijethi</string>
+    <string name="menu_wallpaper">Isithombe sangemuva</string>
+    <string name="remove">Susa</string>
+    <string name="app_info">Ulwazi lohlelo lokusebenza</string>
+    <string name="no_space">Alikho isikhala esikrinini sasekhaya</string>
+    <string name="app_not_found">Uhlelo lokusebenza alutholakalanga</string>
+    <string name="hint">Swayipha phezulu: zonke izinhlelo zokusebenza. Cindezela isikhathi eside: amawijethi, isithombe sangemuva, hambisa amabhonwe.</string>
+    <string name="menu_settings">Amasethingi</string>
+    <string name="set_grid">Igridi yesikrini sasekhaya</string>
+    <string name="set_drawer_cols">Amakholomu kumenyu yezinhlelo zokusebenza</string>
+    <string name="set_iconpack">Iphakheji yamabhonwe</string>
+    <string name="auto">Okuzenzekelayo</string>
+    <string name="default_icons">Isistimu</string>
+    <string name="no_icon_packs">Awekho amaphakheji amabhonwe afakiwe</string>
+    <string name="search_hint">Sesha izinhlelo zokusebenza</string>
+    <string name="set_font">Usayizi wefonti</string>
+    <string name="font_small">Omncane</string>
+    <string name="font_normal">Ejwayelekile</string>
+    <string name="font_large">Omkhulu</string>
+    <string name="font_huge">Omkhulu kakhulu</string>
+</resources>

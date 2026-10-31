@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Visur da partenza</string>
+    <string name="menu_widget">Agiuntar in widget</string>
+    <string name="menu_wallpaper">Maletg dal fund</string>
+    <string name="remove">Allontanar</string>
+    <string name="app_info">Infurmaziuns davart l\'app</string>
+    <string name="no_space">Nagin plaz sin la visur da partenza</string>
+    <string name="app_not_found">L\'app n\'è betg vegnida chattada</string>
+    <string name="hint">Scuar si: tut las apps. Smatgar a lunga: widgets, maletg dal fund, spostar ils simbols.</string>
+    <string name="menu_settings">Parameters</string>
+    <string name="set_grid">Grit da la visur da partenza</string>
+    <string name="set_drawer_cols">Colonnas en il menu d\'apps</string>
+    <string name="set_iconpack">Pachet da simbols</string>
+    <string name="auto">Automatic</string>
+    <string name="default_icons">Sistem</string>
+    <string name="no_icon_packs">Nagins pachets da simbols installads</string>
+    <string name="search_hint">Tschertgar apps</string>
+    <string name="set_font">Grondezza da scrittira</string>
+    <string name="font_small">Pitschna</string>
+    <string name="font_normal">Normala</string>
+    <string name="font_large">Gronda</string>
+    <string name="font_huge">Fitg gronda</string>
+</resources>

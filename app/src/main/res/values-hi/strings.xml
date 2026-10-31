@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">होम स्क्रीन</string>
+    <string name="menu_widget">विजेट जोड़ें</string>
+    <string name="menu_wallpaper">वॉलपेपर</string>
+    <string name="remove">हटाएं</string>
+    <string name="app_info">ऐप की जानकारी</string>
+    <string name="no_space">होम स्क्रीन पर जगह नहीं है</string>
+    <string name="app_not_found">ऐप नहीं मिला</string>
+    <string name="hint">ऊपर स्वाइप करें: सभी ऐप्स। देर तक दबाएं: विजेट, वॉलपेपर, आइकन खिसकाना।</string>
+    <string name="menu_settings">सेटिंग</string>
+    <string name="set_grid">होम स्क्रीन ग्रिड</string>
+    <string name="set_drawer_cols">ऐप मेनू में स्तंभ</string>
+    <string name="set_iconpack">आइकन पैक</string>
+    <string name="auto">स्वचालित</string>
+    <string name="default_icons">सिस्टम</string>
+    <string name="no_icon_packs">कोई आइकन पैक इंस्टॉल नहीं है</string>
+    <string name="search_hint">ऐप्स खोजें</string>
+    <string name="set_font">फ़ॉन्ट आकार</string>
+    <string name="font_small">छोटा</string>
+    <string name="font_normal">सामान्य</string>
+    <string name="font_large">बड़ा</string>
+    <string name="font_huge">बहुत बड़ा</string>
+</resources>

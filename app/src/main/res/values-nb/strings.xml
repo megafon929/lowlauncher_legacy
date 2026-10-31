@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Startskjerm</string>
+    <string name="menu_widget">Legg til modul</string>
+    <string name="menu_wallpaper">Bakgrunn</string>
+    <string name="remove">Fjern</string>
+    <string name="app_info">Appinfo</string>
+    <string name="no_space">Det er ikke plass på startskjermen</string>
+    <string name="app_not_found">Appen ble ikke funnet</string>
+    <string name="hint">Sveip opp: alle apper. Trykk og hold: moduler, bakgrunn, flytt ikoner.</string>
+    <string name="menu_settings">Innstillinger</string>
+    <string name="set_grid">Rutenett på startskjermen</string>
+    <string name="set_drawer_cols">Kolonner i appmenyen</string>
+    <string name="set_iconpack">Ikonpakke</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">Ingen ikonpakker er installert</string>
+    <string name="search_hint">Søk etter apper</string>
+    <string name="set_font">Skriftstørrelse</string>
+    <string name="font_small">Liten</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Stor</string>
+    <string name="font_huge">Veldig stor</string>
+</resources>

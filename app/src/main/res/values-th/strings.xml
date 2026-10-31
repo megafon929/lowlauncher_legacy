@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">หน้าจอหลัก</string>
+    <string name="menu_widget">เพิ่มวิดเจ็ต</string>
+    <string name="menu_wallpaper">วอลเปเปอร์</string>
+    <string name="remove">ลบ</string>
+    <string name="app_info">ข้อมูลแอป</string>
+    <string name="no_space">ไม่มีที่ว่างบนหน้าจอหลัก</string>
+    <string name="app_not_found">ไม่พบแอป</string>
+    <string name="hint">ปัดขึ้น: แอปทั้งหมด กดค้าง: วิดเจ็ต วอลเปเปอร์ ย้ายไอคอน</string>
+    <string name="menu_settings">การตั้งค่า</string>
+    <string name="set_grid">ตารางหน้าจอหลัก</string>
+    <string name="set_drawer_cols">คอลัมน์ในเมนูแอป</string>
+    <string name="set_iconpack">ชุดไอคอน</string>
+    <string name="auto">อัตโนมัติ</string>
+    <string name="default_icons">ระบบ</string>
+    <string name="no_icon_packs">ไม่มีชุดไอคอนที่ติดตั้งไว้</string>
+    <string name="search_hint">ค้นหาแอป</string>
+    <string name="set_font">ขนาดแบบอักษร</string>
+    <string name="font_small">เล็ก</string>
+    <string name="font_normal">ปกติ</string>
+    <string name="font_large">ใหญ่</string>
+    <string name="font_huge">ใหญ่มาก</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Domači zaslon</string>
+    <string name="menu_widget">Dodaj pripomoček</string>
+    <string name="menu_wallpaper">Ozadje</string>
+    <string name="remove">Odstrani</string>
+    <string name="app_info">Podatki o aplikaciji</string>
+    <string name="no_space">Na domačem zaslonu ni prostora</string>
+    <string name="app_not_found">Aplikacije ni bilo mogoče najti</string>
+    <string name="hint">Podrsnite navzgor: vse aplikacije. Dolg pritisk: pripomočki, ozadje, premikanje ikon.</string>
+    <string name="menu_settings">Nastavitve</string>
+    <string name="set_grid">Mreža domačega zaslona</string>
+    <string name="set_drawer_cols">Stolpci v meniju aplikacij</string>
+    <string name="set_iconpack">Paket ikon</string>
+    <string name="auto">Samodejno</string>
+    <string name="default_icons">Sistemske</string>
+    <string name="no_icon_packs">Ni nameščenih paketov ikon</string>
+    <string name="search_hint">Išči aplikacije</string>
+    <string name="set_font">Velikost pisave</string>
+    <string name="font_small">Majhna</string>
+    <string name="font_normal">Običajna</string>
+    <string name="font_large">Velika</string>
+    <string name="font_huge">Zelo velika</string>
+</resources>

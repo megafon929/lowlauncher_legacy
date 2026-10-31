@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Aloitusnäyttö</string>
+    <string name="menu_widget">Lisää widget</string>
+    <string name="menu_wallpaper">Taustakuva</string>
+    <string name="remove">Poista</string>
+    <string name="app_info">Sovelluksen tiedot</string>
+    <string name="no_space">Aloitusnäytössä ei ole tilaa</string>
+    <string name="app_not_found">Sovellusta ei löytynyt</string>
+    <string name="hint">Pyyhkäise ylös: kaikki sovellukset. Pitkä painallus: widgetit, taustakuva, kuvakkeiden siirto.</string>
+    <string name="menu_settings">Asetukset</string>
+    <string name="set_grid">Aloitusnäytön ruudukko</string>
+    <string name="set_drawer_cols">Sovellusvalikon sarakkeet</string>
+    <string name="set_iconpack">Kuvakepaketti</string>
+    <string name="auto">Automaattinen</string>
+    <string name="default_icons">Järjestelmä</string>
+    <string name="no_icon_packs">Kuvakepaketteja ei ole asennettu</string>
+    <string name="search_hint">Hae sovelluksia</string>
+    <string name="set_font">Fontin koko</string>
+    <string name="font_small">Pieni</string>
+    <string name="font_normal">Normaali</string>
+    <string name="font_large">Suuri</string>
+    <string name="font_huge">Erittäin suuri</string>
+</resources>

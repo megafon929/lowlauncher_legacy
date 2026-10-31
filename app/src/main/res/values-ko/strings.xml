@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">홈 화면</string>
+    <string name="menu_widget">위젯 추가</string>
+    <string name="menu_wallpaper">배경화면</string>
+    <string name="remove">삭제</string>
+    <string name="app_info">앱 정보</string>
+    <string name="no_space">홈 화면에 공간이 없습니다</string>
+    <string name="app_not_found">앱을 찾을 수 없습니다</string>
+    <string name="hint">위로 스와이프: 모든 앱. 길게 누르기: 위젯, 배경화면, 아이콘 이동.</string>
+    <string name="menu_settings">설정</string>
+    <string name="set_grid">홈 화면 그리드</string>
+    <string name="set_drawer_cols">앱 메뉴 열 수</string>
+    <string name="set_iconpack">아이콘 팩</string>
+    <string name="auto">자동</string>
+    <string name="default_icons">시스템</string>
+    <string name="no_icon_packs">설치된 아이콘 팩이 없습니다</string>
+    <string name="search_hint">앱 검색</string>
+    <string name="set_font">글꼴 크기</string>
+    <string name="font_small">작게</string>
+    <string name="font_normal">보통</string>
+    <string name="font_large">크게</string>
+    <string name="font_huge">매우 크게</string>
+</resources>

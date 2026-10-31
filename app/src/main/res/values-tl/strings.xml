@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Home screen</string>
+    <string name="menu_widget">Magdagdag ng widget</string>
+    <string name="menu_wallpaper">Wallpaper</string>
+    <string name="remove">Alisin</string>
+    <string name="app_info">Impormasyon ng app</string>
+    <string name="no_space">Walang espasyo sa home screen</string>
+    <string name="app_not_found">Hindi nakita ang app</string>
+    <string name="hint">Mag-swipe pataas: lahat ng app. Pindutin nang matagal: mga widget, wallpaper, ilipat ang mga icon.</string>
+    <string name="menu_settings">Mga setting</string>
+    <string name="set_grid">Grid ng home screen</string>
+    <string name="set_drawer_cols">Mga column sa menu ng app</string>
+    <string name="set_iconpack">Icon pack</string>
+    <string name="auto">Awtomatiko</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">Walang naka-install na icon pack</string>
+    <string name="search_hint">Maghanap ng app</string>
+    <string name="set_font">Laki ng font</string>
+    <string name="font_small">Maliit</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Malaki</string>
+    <string name="font_huge">Napakalaki</string>
+</resources>

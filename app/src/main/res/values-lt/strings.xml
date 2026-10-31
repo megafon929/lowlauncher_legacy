@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Pagrindinis ekranas</string>
+    <string name="menu_widget">Pridėti valdiklį</string>
+    <string name="menu_wallpaper">Ekrano fonas</string>
+    <string name="remove">Pašalinti</string>
+    <string name="app_info">Programos informacija</string>
+    <string name="no_space">Pagrindiniame ekrane nėra vietos</string>
+    <string name="app_not_found">Programa nerasta</string>
+    <string name="hint">Perbraukite aukštyn: visos programos. Ilgai palaikykite: valdikliai, ekrano fonas, piktogramų perkėlimas.</string>
+    <string name="menu_settings">Nustatymai</string>
+    <string name="set_grid">Pagrindinio ekrano tinklelis</string>
+    <string name="set_drawer_cols">Programų meniu stulpeliai</string>
+    <string name="set_iconpack">Piktogramų rinkinys</string>
+    <string name="auto">Automatinis</string>
+    <string name="default_icons">Sistemos</string>
+    <string name="no_icon_packs">Neįdiegta piktogramų rinkinių</string>
+    <string name="search_hint">Ieškoti programų</string>
+    <string name="set_font">Šrifto dydis</string>
+    <string name="font_small">Mažas</string>
+    <string name="font_normal">Įprastas</string>
+    <string name="font_large">Didelis</string>
+    <string name="font_huge">Labai didelis</string>
+</resources>

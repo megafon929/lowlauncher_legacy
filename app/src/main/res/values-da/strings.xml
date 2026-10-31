@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Startskærm</string>
+    <string name="menu_widget">Tilføj widget</string>
+    <string name="menu_wallpaper">Baggrund</string>
+    <string name="remove">Fjern</string>
+    <string name="app_info">Appinfo</string>
+    <string name="no_space">Der er ikke plads på startskærmen</string>
+    <string name="app_not_found">Appen blev ikke fundet</string>
+    <string name="hint">Stryg op: alle apps. Tryk og hold: widgets, baggrund, flyt ikoner.</string>
+    <string name="menu_settings">Indstillinger</string>
+    <string name="set_grid">Gitter på startskærmen</string>
+    <string name="set_drawer_cols">Kolonner i appmenuen</string>
+    <string name="set_iconpack">Ikonpakke</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">Ingen ikonpakker installeret</string>
+    <string name="search_hint">Søg efter apps</string>
+    <string name="set_font">Skriftstørrelse</string>
+    <string name="font_small">Lille</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Stor</string>
+    <string name="font_huge">Meget stor</string>
+</resources>

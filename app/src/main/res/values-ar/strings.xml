@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">الشاشة الرئيسية</string>
+    <string name="menu_widget">إضافة أداة</string>
+    <string name="menu_wallpaper">الخلفية</string>
+    <string name="remove">إزالة</string>
+    <string name="app_info">معلومات التطبيق</string>
+    <string name="no_space">لا توجد مساحة على الشاشة الرئيسية</string>
+    <string name="app_not_found">لم يتم العثور على التطبيق</string>
+    <string name="hint">اسحب لأعلى: جميع التطبيقات. اضغط مطولًا: الأدوات، الخلفية، نقل الأيقونات.</string>
+    <string name="menu_settings">الإعدادات</string>
+    <string name="set_grid">شبكة الشاشة الرئيسية</string>
+    <string name="set_drawer_cols">أعمدة قائمة التطبيقات</string>
+    <string name="set_iconpack">حزمة الأيقونات</string>
+    <string name="auto">تلقائي</string>
+    <string name="default_icons">النظام</string>
+    <string name="no_icon_packs">لا توجد حزم أيقونات مثبتة</string>
+    <string name="search_hint">البحث عن التطبيقات</string>
+    <string name="set_font">حجم الخط</string>
+    <string name="font_small">صغير</string>
+    <string name="font_normal">عادي</string>
+    <string name="font_large">كبير</string>
+    <string name="font_huge">كبير جدًا</string>
+</resources>

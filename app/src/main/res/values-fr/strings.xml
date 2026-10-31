@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Écran d\'accueil</string>
+    <string name="menu_widget">Ajouter un widget</string>
+    <string name="menu_wallpaper">Fond d\'écran</string>
+    <string name="remove">Supprimer</string>
+    <string name="app_info">Infos sur l\'application</string>
+    <string name="no_space">Pas de place sur l\'écran d\'accueil</string>
+    <string name="app_not_found">Application introuvable</string>
+    <string name="hint">Balayez vers le haut : toutes les applis. Appui long : widgets, fond d\'écran, déplacer les icônes.</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="set_grid">Grille de l\'écran d\'accueil</string>
+    <string name="set_drawer_cols">Colonnes du menu des applications</string>
+    <string name="set_iconpack">Pack d\'icônes</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">Système</string>
+    <string name="no_icon_packs">Aucun pack d\'icônes installé</string>
+    <string name="search_hint">Rechercher des applications</string>
+    <string name="set_font">Taille de police</string>
+    <string name="font_small">Petite</string>
+    <string name="font_normal">Normale</string>
+    <string name="font_large">Grande</string>
+    <string name="font_huge">Très grande</string>
+</resources>

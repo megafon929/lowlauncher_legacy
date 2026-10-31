@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Ana ekran</string>
+    <string name="menu_widget">Widget ekle</string>
+    <string name="menu_wallpaper">Duvar kâğıdı</string>
+    <string name="remove">Kaldır</string>
+    <string name="app_info">Uygulama bilgisi</string>
+    <string name="no_space">Ana ekranda yer yok</string>
+    <string name="app_not_found">Uygulama bulunamadı</string>
+    <string name="hint">Yukarı kaydırın: tüm uygulamalar. Uzun basın: widget\'lar, duvar kâğıdı, simgeleri taşıma.</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="set_grid">Ana ekran ızgarası</string>
+    <string name="set_drawer_cols">Uygulama menüsündeki sütunlar</string>
+    <string name="set_iconpack">Simge paketi</string>
+    <string name="auto">Otomatik</string>
+    <string name="default_icons">Sistem</string>
+    <string name="no_icon_packs">Yüklü simge paketi yok</string>
+    <string name="search_hint">Uygulama ara</string>
+    <string name="set_font">Yazı tipi boyutu</string>
+    <string name="font_small">Küçük</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Büyük</string>
+    <string name="font_huge">Çok büyük</string>
+</resources>

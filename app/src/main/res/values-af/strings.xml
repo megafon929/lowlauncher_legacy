@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Tuisskerm</string>
+    <string name="menu_widget">Voeg legstuk by</string>
+    <string name="menu_wallpaper">Muurpapier</string>
+    <string name="remove">Verwyder</string>
+    <string name="app_info">Toepassinginligting</string>
+    <string name="no_space">Geen ruimte op die tuisskerm nie</string>
+    <string name="app_not_found">Toepassing nie gevind nie</string>
+    <string name="hint">Swiep op: alle toepassings. Hou lank in: legstukke, muurpapier, skuif ikone.</string>
+    <string name="menu_settings">Instellings</string>
+    <string name="set_grid">Tuisskermrooster</string>
+    <string name="set_drawer_cols">Kolomme in toepassingskieslys</string>
+    <string name="set_iconpack">Ikoonpakket</string>
+    <string name="auto">Outo</string>
+    <string name="default_icons">Stelsel</string>
+    <string name="no_icon_packs">Geen ikoonpakkette geïnstalleer nie</string>
+    <string name="search_hint">Soek toepassings</string>
+    <string name="set_font">Lettergrootte</string>
+    <string name="font_small">Klein</string>
+    <string name="font_normal">Normaal</string>
+    <string name="font_large">Groot</string>
+    <string name="font_huge">Baie groot</string>
+</resources>

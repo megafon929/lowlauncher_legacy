@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Skrini ya kwanza</string>
+    <string name="menu_widget">Ongeza wijeti</string>
+    <string name="menu_wallpaper">Mandhari</string>
+    <string name="remove">Ondoa</string>
+    <string name="app_info">Maelezo ya programu</string>
+    <string name="no_space">Hakuna nafasi kwenye skrini ya kwanza</string>
+    <string name="app_not_found">Programu haijapatikana</string>
+    <string name="hint">Telezesha juu: programu zote. Bonyeza kwa muda mrefu: wijeti, mandhari, kuhamisha aikoni.</string>
+    <string name="menu_settings">Mipangilio</string>
+    <string name="set_grid">Gridi ya skrini ya kwanza</string>
+    <string name="set_drawer_cols">Safu wima katika menyu ya programu</string>
+    <string name="set_iconpack">Kifurushi cha aikoni</string>
+    <string name="auto">Otomatiki</string>
+    <string name="default_icons">Mfumo</string>
+    <string name="no_icon_packs">Hakuna vifurushi vya aikoni vilivyosakinishwa</string>
+    <string name="search_hint">Tafuta programu</string>
+    <string name="set_font">Ukubwa wa fonti</string>
+    <string name="font_small">Ndogo</string>
+    <string name="font_normal">Kawaida</string>
+    <string name="font_large">Kubwa</string>
+    <string name="font_huge">Kubwa sana</string>
+</resources>

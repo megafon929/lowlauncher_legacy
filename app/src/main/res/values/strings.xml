@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">LowLauncher</string>
+    <string name="menu_title">Home screen</string>
+    <string name="menu_widget">Add widget</string>
+    <string name="menu_wallpaper">Wallpaper</string>
+    <string name="remove">Remove</string>
+    <string name="app_info">App info</string>
+    <string name="no_space">No room on the home screen</string>
+    <string name="app_not_found">Application not found</string>
+    <string name="hint">Swipe up: all apps. Long press: widgets, wallpaper, move icons.</string>
+    <string name="menu_settings">Settings</string>
+    <string name="set_grid">Home screen grid</string>
+    <string name="set_drawer_cols">App drawer columns</string>
+    <string name="set_iconpack">Icon pack</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">No icon packs installed</string>
+    <string name="search_hint">Search apps</string>
+    <string name="set_font">Font size</string>
+    <string name="font_small">Small</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Large</string>
+    <string name="font_huge">Huge</string>
+</resources>

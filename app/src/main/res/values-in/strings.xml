@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Layar utama</string>
+    <string name="menu_widget">Tambah widget</string>
+    <string name="menu_wallpaper">Wallpaper</string>
+    <string name="remove">Hapus</string>
+    <string name="app_info">Info aplikasi</string>
+    <string name="no_space">Tidak ada ruang di layar utama</string>
+    <string name="app_not_found">Aplikasi tidak ditemukan</string>
+    <string name="hint">Geser ke atas: semua aplikasi. Tekan lama: widget, wallpaper, pindahkan ikon.</string>
+    <string name="menu_settings">Setelan</string>
+    <string name="set_grid">Kisi layar utama</string>
+    <string name="set_drawer_cols">Kolom menu aplikasi</string>
+    <string name="set_iconpack">Paket ikon</string>
+    <string name="auto">Otomatis</string>
+    <string name="default_icons">Sistem</string>
+    <string name="no_icon_packs">Tidak ada paket ikon terpasang</string>
+    <string name="search_hint">Cari aplikasi</string>
+    <string name="set_font">Ukuran font</string>
+    <string name="font_small">Kecil</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Besar</string>
+    <string name="font_huge">Sangat besar</string>
+</resources>

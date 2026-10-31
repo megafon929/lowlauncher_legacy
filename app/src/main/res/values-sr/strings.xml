@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Почетни екран</string>
+    <string name="menu_widget">Додај виџет</string>
+    <string name="menu_wallpaper">Позадина</string>
+    <string name="remove">Уклони</string>
+    <string name="app_info">Информације о апликацији</string>
+    <string name="no_space">Нема места на почетном екрану</string>
+    <string name="app_not_found">Апликација није пронађена</string>
+    <string name="hint">Превуците нагоре: све апликације. Дуго притисните: виџети, позадина, премештање икона.</string>
+    <string name="menu_settings">Подешавања</string>
+    <string name="set_grid">Мрежа почетног екрана</string>
+    <string name="set_drawer_cols">Колоне у менију апликација</string>
+    <string name="set_iconpack">Пакет икона</string>
+    <string name="auto">Аутоматски</string>
+    <string name="default_icons">Системске</string>
+    <string name="no_icon_packs">Нема инсталираних пакета икона</string>
+    <string name="search_hint">Претражи апликације</string>
+    <string name="set_font">Величина фонта</string>
+    <string name="font_small">Мала</string>
+    <string name="font_normal">Нормална</string>
+    <string name="font_large">Велика</string>
+    <string name="font_huge">Врло велика</string>
+</resources>

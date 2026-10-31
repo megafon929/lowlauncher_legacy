@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Startscherm</string>
+    <string name="menu_widget">Widget toevoegen</string>
+    <string name="menu_wallpaper">Achtergrond</string>
+    <string name="remove">Verwijderen</string>
+    <string name="app_info">App-info</string>
+    <string name="no_space">Geen ruimte op het startscherm</string>
+    <string name="app_not_found">App niet gevonden</string>
+    <string name="hint">Veeg omhoog: alle apps. Lang indrukken: widgets, achtergrond, pictogrammen verplaatsen.</string>
+    <string name="menu_settings">Instellingen</string>
+    <string name="set_grid">Raster van het startscherm</string>
+    <string name="set_drawer_cols">Kolommen in het appmenu</string>
+    <string name="set_iconpack">Pictogrampakket</string>
+    <string name="auto">Automatisch</string>
+    <string name="default_icons">Systeem</string>
+    <string name="no_icon_packs">Geen pictogrampakketten geïnstalleerd</string>
+    <string name="search_hint">Apps zoeken</string>
+    <string name="set_font">Lettergrootte</string>
+    <string name="font_small">Klein</string>
+    <string name="font_normal">Normaal</string>
+    <string name="font_large">Groot</string>
+    <string name="font_huge">Zeer groot</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">מסך הבית</string>
+    <string name="menu_widget">הוספת ווידג\'ט</string>
+    <string name="menu_wallpaper">טפט</string>
+    <string name="remove">הסר</string>
+    <string name="app_info">פרטי האפליקציה</string>
+    <string name="no_space">אין מקום במסך הבית</string>
+    <string name="app_not_found">האפליקציה לא נמצאה</string>
+    <string name="hint">החלק למעלה: כל האפליקציות. לחיצה ארוכה: ווידג\'טים, טפט, הזזת סמלים.</string>
+    <string name="menu_settings">הגדרות</string>
+    <string name="set_grid">רשת מסך הבית</string>
+    <string name="set_drawer_cols">עמודות בתפריט האפליקציות</string>
+    <string name="set_iconpack">חבילת סמלים</string>
+    <string name="auto">אוטומטי</string>
+    <string name="default_icons">מערכת</string>
+    <string name="no_icon_packs">לא הותקנו חבילות סמלים</string>
+    <string name="search_hint">חיפוש אפליקציות</string>
+    <string name="set_font">גודל גופן</string>
+    <string name="font_small">קטן</string>
+    <string name="font_normal">רגיל</string>
+    <string name="font_large">גדול</string>
+    <string name="font_huge">גדול מאוד</string>
+</resources>

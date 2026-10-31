@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Головний екран</string>
+    <string name="menu_widget">Додати віджет</string>
+    <string name="menu_wallpaper">Шпалери</string>
+    <string name="remove">Видалити</string>
+    <string name="app_info">Про програму</string>
+    <string name="no_space">На головному екрані немає місця</string>
+    <string name="app_not_found">Програму не знайдено</string>
+    <string name="hint">Проведіть угору: усі програми. Довге натискання: віджети, шпалери, переміщення значків.</string>
+    <string name="menu_settings">Налаштування</string>
+    <string name="set_grid">Сітка головного екрана</string>
+    <string name="set_drawer_cols">Стовпці в меню програм</string>
+    <string name="set_iconpack">Набір значків</string>
+    <string name="auto">Авто</string>
+    <string name="default_icons">Системні</string>
+    <string name="no_icon_packs">Набори значків не встановлено</string>
+    <string name="search_hint">Пошук програм</string>
+    <string name="set_font">Розмір шрифту</string>
+    <string name="font_small">Малий</string>
+    <string name="font_normal">Звичайний</string>
+    <string name="font_large">Великий</string>
+    <string name="font_huge">Дуже великий</string>
+</resources>

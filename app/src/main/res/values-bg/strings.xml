@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Начален екран</string>
+    <string name="menu_widget">Добавяне на приспособление</string>
+    <string name="menu_wallpaper">Тапет</string>
+    <string name="remove">Премахване</string>
+    <string name="app_info">Информация за приложението</string>
+    <string name="no_space">Няма място на началния екран</string>
+    <string name="app_not_found">Приложението не е намерено</string>
+    <string name="hint">Плъзнете нагоре: всички приложения. Натиснете и задръжте: приспособления, тапет, преместване на икони.</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="set_grid">Мрежа на началния екран</string>
+    <string name="set_drawer_cols">Колони в менюто с приложения</string>
+    <string name="set_iconpack">Пакет с икони</string>
+    <string name="auto">Автоматично</string>
+    <string name="default_icons">Системни</string>
+    <string name="no_icon_packs">Няма инсталирани пакети с икони</string>
+    <string name="search_hint">Търсене на приложения</string>
+    <string name="set_font">Размер на шрифта</string>
+    <string name="font_small">Малък</string>
+    <string name="font_normal">Нормален</string>
+    <string name="font_large">Голям</string>
+    <string name="font_huge">Много голям</string>
+</resources>

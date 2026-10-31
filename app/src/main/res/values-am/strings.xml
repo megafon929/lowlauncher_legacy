@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">መነሻ ማያ</string>
+    <string name="menu_widget">ምግብር አክል</string>
+    <string name="menu_wallpaper">ልጣፍ</string>
+    <string name="remove">አስወግድ</string>
+    <string name="app_info">የመተግበሪያ መረጃ</string>
+    <string name="no_space">በመነሻ ማያ ላይ ቦታ የለም</string>
+    <string name="app_not_found">መተግበሪያ አልተገኘም</string>
+    <string name="hint">ወደ ላይ ጠረግ፦ ሁሉም መተግበሪያዎች። ረጅም ተጭነው ይያዙ፦ ምግብሮች፣ ልጣፍ፣ አዶዎችን ማንቀሳቀስ።</string>
+    <string name="menu_settings">ቅንብሮች</string>
+    <string name="set_grid">የመነሻ ማያ ፍርግርግ</string>
+    <string name="set_drawer_cols">በመተግበሪያ ዝርዝር ውስጥ ያሉ አምዶች</string>
+    <string name="set_iconpack">የአዶ ጥቅል</string>
+    <string name="auto">ራስ-ሰር</string>
+    <string name="default_icons">ሥርዓት</string>
+    <string name="no_icon_packs">ምንም የአዶ ጥቅሎች አልተጫኑም</string>
+    <string name="search_hint">መተግበሪያዎችን ፈልግ</string>
+    <string name="set_font">የቅርጸ-ቁምፊ መጠን</string>
+    <string name="font_small">ትንሽ</string>
+    <string name="font_normal">መደበኛ</string>
+    <string name="font_large">ትልቅ</string>
+    <string name="font_huge">በጣም ትልቅ</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Màn hình chính</string>
+    <string name="menu_widget">Thêm tiện ích</string>
+    <string name="menu_wallpaper">Hình nền</string>
+    <string name="remove">Xóa</string>
+    <string name="app_info">Thông tin ứng dụng</string>
+    <string name="no_space">Không còn chỗ trên màn hình chính</string>
+    <string name="app_not_found">Không tìm thấy ứng dụng</string>
+    <string name="hint">Vuốt lên: tất cả ứng dụng. Nhấn giữ: tiện ích, hình nền, di chuyển biểu tượng.</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="set_grid">Lưới màn hình chính</string>
+    <string name="set_drawer_cols">Số cột trong menu ứng dụng</string>
+    <string name="set_iconpack">Gói biểu tượng</string>
+    <string name="auto">Tự động</string>
+    <string name="default_icons">Hệ thống</string>
+    <string name="no_icon_packs">Chưa cài gói biểu tượng nào</string>
+    <string name="search_hint">Tìm ứng dụng</string>
+    <string name="set_font">Cỡ chữ</string>
+    <string name="font_small">Nhỏ</string>
+    <string name="font_normal">Bình thường</string>
+    <string name="font_large">Lớn</string>
+    <string name="font_huge">Rất lớn</string>
+</resources>

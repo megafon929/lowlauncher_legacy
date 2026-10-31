@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Skrin utama</string>
+    <string name="menu_widget">Tambah widget</string>
+    <string name="menu_wallpaper">Kertas dinding</string>
+    <string name="remove">Alih keluar</string>
+    <string name="app_info">Maklumat apl</string>
+    <string name="no_space">Tiada ruang pada skrin utama</string>
+    <string name="app_not_found">Apl tidak ditemui</string>
+    <string name="hint">Leret ke atas: semua apl. Tekan lama: widget, kertas dinding, alih ikon.</string>
+    <string name="menu_settings">Tetapan</string>
+    <string name="set_grid">Grid skrin utama</string>
+    <string name="set_drawer_cols">Lajur menu apl</string>
+    <string name="set_iconpack">Pek ikon</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">Sistem</string>
+    <string name="no_icon_packs">Tiada pek ikon dipasang</string>
+    <string name="search_hint">Cari apl</string>
+    <string name="set_font">Saiz fon</string>
+    <string name="font_small">Kecil</string>
+    <string name="font_normal">Biasa</string>
+    <string name="font_large">Besar</string>
+    <string name="font_huge">Sangat besar</string>
+</resources>

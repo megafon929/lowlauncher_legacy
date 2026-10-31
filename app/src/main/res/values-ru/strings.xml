@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Рабочий стол</string>
+    <string name="menu_widget">Добавить виджет</string>
+    <string name="menu_wallpaper">Обои</string>
+    <string name="remove">Удалить</string>
+    <string name="app_info">О приложении</string>
+    <string name="no_space">На рабочем столе нет места</string>
+    <string name="app_not_found">Приложение не найдено</string>
+    <string name="hint">Свайп вверх — все приложения. Долгое нажатие — виджеты, обои, перенос значков.</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="set_grid">Сетка рабочего стола</string>
+    <string name="set_drawer_cols">Колонки в меню приложений</string>
+    <string name="set_iconpack">Набор иконок</string>
+    <string name="auto">Авто</string>
+    <string name="default_icons">Системные</string>
+    <string name="no_icon_packs">Наборы иконок (Icon Pack) не найдены</string>
+    <string name="search_hint">Поиск приложений</string>
+    <string name="set_font">Размер шрифта</string>
+    <string name="font_small">Мелкий</string>
+    <string name="font_normal">Обычный</string>
+    <string name="font_large">Крупный</string>
+    <string name="font_huge">Огромный</string>
+</resources>

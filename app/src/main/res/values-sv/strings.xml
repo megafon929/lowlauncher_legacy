@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Startskärm</string>
+    <string name="menu_widget">Lägg till widget</string>
+    <string name="menu_wallpaper">Bakgrund</string>
+    <string name="remove">Ta bort</string>
+    <string name="app_info">Appinfo</string>
+    <string name="no_space">Det finns inget utrymme på startskärmen</string>
+    <string name="app_not_found">Appen hittades inte</string>
+    <string name="hint">Svep uppåt: alla appar. Tryck länge: widgetar, bakgrund, flytta ikoner.</string>
+    <string name="menu_settings">Inställningar</string>
+    <string name="set_grid">Rutnät för startskärmen</string>
+    <string name="set_drawer_cols">Kolumner i appmenyn</string>
+    <string name="set_iconpack">Ikonpaket</string>
+    <string name="auto">Auto</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">Inga ikonpaket installerade</string>
+    <string name="search_hint">Sök efter appar</string>
+    <string name="set_font">Teckenstorlek</string>
+    <string name="font_small">Liten</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Stor</string>
+    <string name="font_huge">Mycket stor</string>
+</resources>

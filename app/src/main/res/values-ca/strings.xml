@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Pantalla d\'inici</string>
+    <string name="menu_widget">Afegeix un widget</string>
+    <string name="menu_wallpaper">Fons de pantalla</string>
+    <string name="remove">Elimina</string>
+    <string name="app_info">Informació de l\'aplicació</string>
+    <string name="no_space">No hi ha espai a la pantalla d\'inici</string>
+    <string name="app_not_found">No s\'ha trobat l\'aplicació</string>
+    <string name="hint">Llisca cap amunt: totes les aplicacions. Pulsació llarga: widgets, fons de pantalla, moure icones.</string>
+    <string name="menu_settings">Configuració</string>
+    <string name="set_grid">Quadrícula de la pantalla d\'inici</string>
+    <string name="set_drawer_cols">Columnes del menú d\'aplicacions</string>
+    <string name="set_iconpack">Paquet d\'icones</string>
+    <string name="auto">Automàtic</string>
+    <string name="default_icons">Sistema</string>
+    <string name="no_icon_packs">No hi ha paquets d\'icones instal·lats</string>
+    <string name="search_hint">Cerca aplicacions</string>
+    <string name="set_font">Mida de la lletra</string>
+    <string name="font_small">Petita</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Gran</string>
+    <string name="font_huge">Molt gran</string>
+</resources>

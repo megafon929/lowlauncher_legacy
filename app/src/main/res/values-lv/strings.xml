@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Sākuma ekrāns</string>
+    <string name="menu_widget">Pievienot logrīku</string>
+    <string name="menu_wallpaper">Fona tapete</string>
+    <string name="remove">Noņemt</string>
+    <string name="app_info">Informācija par lietotni</string>
+    <string name="no_space">Sākuma ekrānā nav vietas</string>
+    <string name="app_not_found">Lietotne nav atrasta</string>
+    <string name="hint">Velciet uz augšu: visas lietotnes. Turiet nospiestu: logrīki, fona tapete, ikonu pārvietošana.</string>
+    <string name="menu_settings">Iestatījumi</string>
+    <string name="set_grid">Sākuma ekrāna režģis</string>
+    <string name="set_drawer_cols">Kolonnas lietotņu izvēlnē</string>
+    <string name="set_iconpack">Ikonu komplekts</string>
+    <string name="auto">Automātiski</string>
+    <string name="default_icons">Sistēmas</string>
+    <string name="no_icon_packs">Nav instalēts neviens ikonu komplekts</string>
+    <string name="search_hint">Meklēt lietotnes</string>
+    <string name="set_font">Fonta lielums</string>
+    <string name="font_small">Mazs</string>
+    <string name="font_normal">Parasts</string>
+    <string name="font_large">Liels</string>
+    <string name="font_huge">Ļoti liels</string>
+</resources>

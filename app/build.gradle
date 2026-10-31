@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.m929.lowlauncher'
+    compileSdk 34          // только для сборки; код проверен на API 15 (см. scripts/check-api15.sh)
+
+    defaultConfig {
+        applicationId 'com.m929.lowlauncher'
+        minSdk 15
+        targetSdk 15
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true                   // R8: сжатие, оптимизация и обфускация кода
+            shrinkResources true                 // удаление неиспользуемых ресурсов
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug   // чтобы release-APK сразу ставился на телефон
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false                 // иначе lintVital падает на targetSdk 15 (правило Google Play)
+        disable 'ExpiredTargetSdkVersion', 'OldTargetApi'
+    }
+}
+// Внешних зависимостей нет: только встроенный Android SDK.
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << '-Xlint:-options'   // убирает предупреждение «source value 8 is obsolete» на новых JDK
+}

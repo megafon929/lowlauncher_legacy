@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Αρχική οθόνη</string>
+    <string name="menu_widget">Προσθήκη widget</string>
+    <string name="menu_wallpaper">Ταπετσαρία</string>
+    <string name="remove">Αφαίρεση</string>
+    <string name="app_info">Πληροφορίες εφαρμογής</string>
+    <string name="no_space">Δεν υπάρχει χώρος στην αρχική οθόνη</string>
+    <string name="app_not_found">Η εφαρμογή δεν βρέθηκε</string>
+    <string name="hint">Σύρετε προς τα πάνω: όλες οι εφαρμογές. Παρατεταμένο πάτημα: widget, ταπετσαρία, μετακίνηση εικονιδίων.</string>
+    <string name="menu_settings">Ρυθμίσεις</string>
+    <string name="set_grid">Πλέγμα αρχικής οθόνης</string>
+    <string name="set_drawer_cols">Στήλες μενού εφαρμογών</string>
+    <string name="set_iconpack">Πακέτο εικονιδίων</string>
+    <string name="auto">Αυτόματο</string>
+    <string name="default_icons">Συστήματος</string>
+    <string name="no_icon_packs">Δεν υπάρχουν εγκατεστημένα πακέτα εικονιδίων</string>
+    <string name="search_hint">Αναζήτηση εφαρμογών</string>
+    <string name="set_font">Μέγεθος γραμματοσειράς</string>
+    <string name="font_small">Μικρό</string>
+    <string name="font_normal">Κανονικό</string>
+    <string name="font_large">Μεγάλο</string>
+    <string name="font_huge">Πολύ μεγάλο</string>
+</resources>

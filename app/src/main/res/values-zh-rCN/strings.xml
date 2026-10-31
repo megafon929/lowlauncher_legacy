@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">主屏幕</string>
+    <string name="menu_widget">添加小部件</string>
+    <string name="menu_wallpaper">壁纸</string>
+    <string name="remove">移除</string>
+    <string name="app_info">应用信息</string>
+    <string name="no_space">主屏幕上没有空间了</string>
+    <string name="app_not_found">未找到应用</string>
+    <string name="hint">向上滑动：所有应用。长按：小部件、壁纸、移动图标。</string>
+    <string name="menu_settings">设置</string>
+    <string name="set_grid">主屏幕网格</string>
+    <string name="set_drawer_cols">应用菜单列数</string>
+    <string name="set_iconpack">图标包</string>
+    <string name="auto">自动</string>
+    <string name="default_icons">系统</string>
+    <string name="no_icon_packs">未安装图标包</string>
+    <string name="search_hint">搜索应用</string>
+    <string name="set_font">字体大小</string>
+    <string name="font_small">小</string>
+    <string name="font_normal">标准</string>
+    <string name="font_large">大</string>
+    <string name="font_huge">特大</string>
+</resources>

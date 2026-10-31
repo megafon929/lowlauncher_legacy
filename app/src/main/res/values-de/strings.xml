@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Startbildschirm</string>
+    <string name="menu_widget">Widget hinzufügen</string>
+    <string name="menu_wallpaper">Hintergrund</string>
+    <string name="remove">Entfernen</string>
+    <string name="app_info">App-Info</string>
+    <string name="no_space">Auf dem Startbildschirm ist kein Platz mehr</string>
+    <string name="app_not_found">App nicht gefunden</string>
+    <string name="hint">Nach oben wischen: alle Apps. Lange drücken: Widgets, Hintergrund, Symbole verschieben.</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="set_grid">Raster des Startbildschirms</string>
+    <string name="set_drawer_cols">Spalten im App-Menü</string>
+    <string name="set_iconpack">Symbolpaket</string>
+    <string name="auto">Automatisch</string>
+    <string name="default_icons">System</string>
+    <string name="no_icon_packs">Keine Symbolpakete installiert</string>
+    <string name="search_hint">Apps suchen</string>
+    <string name="set_font">Schriftgröße</string>
+    <string name="font_small">Klein</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_large">Groß</string>
+    <string name="font_huge">Sehr groß</string>
+</resources>

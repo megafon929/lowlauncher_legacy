@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">صفحه اصلی</string>
+    <string name="menu_widget">افزودن ابزارک</string>
+    <string name="menu_wallpaper">تصویر زمینه</string>
+    <string name="remove">حذف</string>
+    <string name="app_info">اطلاعات برنامه</string>
+    <string name="no_space">در صفحه اصلی جا نیست</string>
+    <string name="app_not_found">برنامه پیدا نشد</string>
+    <string name="hint">به بالا بکشید: همه برنامه‌ها. نگه داشتن: ابزارک‌ها، تصویر زمینه، جابه‌جایی نمادها.</string>
+    <string name="menu_settings">تنظیمات</string>
+    <string name="set_grid">شبکه صفحه اصلی</string>
+    <string name="set_drawer_cols">ستون‌های منوی برنامه‌ها</string>
+    <string name="set_iconpack">بسته نمادها</string>
+    <string name="auto">خودکار</string>
+    <string name="default_icons">سیستم</string>
+    <string name="no_icon_packs">هیچ بسته نمادی نصب نشده است</string>
+    <string name="search_hint">جستجوی برنامه‌ها</string>
+    <string name="set_font">اندازه قلم</string>
+    <string name="font_small">کوچک</string>
+    <string name="font_normal">معمولی</string>
+    <string name="font_large">بزرگ</string>
+    <string name="font_huge">خیلی بزرگ</string>
+</resources>

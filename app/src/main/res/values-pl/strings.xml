@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Ekran główny</string>
+    <string name="menu_widget">Dodaj widżet</string>
+    <string name="menu_wallpaper">Tapeta</string>
+    <string name="remove">Usuń</string>
+    <string name="app_info">Informacje o aplikacji</string>
+    <string name="no_space">Brak miejsca na ekranie głównym</string>
+    <string name="app_not_found">Nie znaleziono aplikacji</string>
+    <string name="hint">Przesuń w górę: wszystkie aplikacje. Przytrzymaj: widżety, tapeta, przenoszenie ikon.</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="set_grid">Siatka ekranu głównego</string>
+    <string name="set_drawer_cols">Kolumny w menu aplikacji</string>
+    <string name="set_iconpack">Zestaw ikon</string>
+    <string name="auto">Automatycznie</string>
+    <string name="default_icons">Systemowe</string>
+    <string name="no_icon_packs">Brak zainstalowanych zestawów ikon</string>
+    <string name="search_hint">Szukaj aplikacji</string>
+    <string name="set_font">Rozmiar czcionki</string>
+    <string name="font_small">Mała</string>
+    <string name="font_normal">Normalna</string>
+    <string name="font_large">Duża</string>
+    <string name="font_huge">Bardzo duża</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Plocha</string>
+    <string name="menu_widget">Přidat widget</string>
+    <string name="menu_wallpaper">Tapeta</string>
+    <string name="remove">Odebrat</string>
+    <string name="app_info">Informace o aplikaci</string>
+    <string name="no_space">Na ploše není místo</string>
+    <string name="app_not_found">Aplikace nebyla nalezena</string>
+    <string name="hint">Přejetí nahoru: všechny aplikace. Dlouhé stisknutí: widgety, tapeta, přesun ikon.</string>
+    <string name="menu_settings">Nastavení</string>
+    <string name="set_grid">Mřížka plochy</string>
+    <string name="set_drawer_cols">Sloupce v nabídce aplikací</string>
+    <string name="set_iconpack">Sada ikon</string>
+    <string name="auto">Automaticky</string>
+    <string name="default_icons">Systémové</string>
+    <string name="no_icon_packs">Nejsou nainstalovány žádné sady ikon</string>
+    <string name="search_hint">Hledat aplikace</string>
+    <string name="set_font">Velikost písma</string>
+    <string name="font_small">Malé</string>
+    <string name="font_normal">Normální</string>
+    <string name="font_large">Velké</string>
+    <string name="font_huge">Obří</string>
+</resources>

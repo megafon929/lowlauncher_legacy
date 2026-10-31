@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Avaekraan</string>
+    <string name="menu_widget">Lisa vidin</string>
+    <string name="menu_wallpaper">Taustapilt</string>
+    <string name="remove">Eemalda</string>
+    <string name="app_info">Rakenduse teave</string>
+    <string name="no_space">Avaekraanil pole ruumi</string>
+    <string name="app_not_found">Rakendust ei leitud</string>
+    <string name="hint">Pühkige üles: kõik rakendused. Vajutage pikalt: vidinad, taustapilt, ikoonide teisaldamine.</string>
+    <string name="menu_settings">Seaded</string>
+    <string name="set_grid">Avaekraani ruudustik</string>
+    <string name="set_drawer_cols">Veerud rakenduste menüüs</string>
+    <string name="set_iconpack">Ikoonipakett</string>
+    <string name="auto">Automaatne</string>
+    <string name="default_icons">Süsteemne</string>
+    <string name="no_icon_packs">Ikoonipakette pole installitud</string>
+    <string name="search_hint">Otsi rakendusi</string>
+    <string name="set_font">Fondi suurus</string>
+    <string name="font_small">Väike</string>
+    <string name="font_normal">Tavaline</string>
+    <string name="font_large">Suur</string>
+    <string name="font_huge">Väga suur</string>
+</resources>

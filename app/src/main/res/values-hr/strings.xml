@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Početni zaslon</string>
+    <string name="menu_widget">Dodaj widget</string>
+    <string name="menu_wallpaper">Pozadina</string>
+    <string name="remove">Ukloni</string>
+    <string name="app_info">Informacije o aplikaciji</string>
+    <string name="no_space">Na početnom zaslonu nema mjesta</string>
+    <string name="app_not_found">Aplikacija nije pronađena</string>
+    <string name="hint">Povucite prema gore: sve aplikacije. Dugo pritisnite: widgeti, pozadina, premještanje ikona.</string>
+    <string name="menu_settings">Postavke</string>
+    <string name="set_grid">Mreža početnog zaslona</string>
+    <string name="set_drawer_cols">Stupci u izborniku aplikacija</string>
+    <string name="set_iconpack">Paket ikona</string>
+    <string name="auto">Automatski</string>
+    <string name="default_icons">Sustav</string>
+    <string name="no_icon_packs">Nema instaliranih paketa ikona</string>
+    <string name="search_hint">Pretraži aplikacije</string>
+    <string name="set_font">Veličina fonta</string>
+    <string name="font_small">Mala</string>
+    <string name="font_normal">Normalna</string>
+    <string name="font_large">Velika</string>
+    <string name="font_huge">Vrlo velika</string>
+</resources>

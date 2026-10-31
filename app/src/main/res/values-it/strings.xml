@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Schermata Home</string>
+    <string name="menu_widget">Aggiungi widget</string>
+    <string name="menu_wallpaper">Sfondo</string>
+    <string name="remove">Rimuovi</string>
+    <string name="app_info">Info app</string>
+    <string name="no_space">Nessuno spazio nella schermata Home</string>
+    <string name="app_not_found">App non trovata</string>
+    <string name="hint">Scorri verso l\'alto: tutte le app. Tocco prolungato: widget, sfondo, sposta icone.</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="set_grid">Griglia della schermata Home</string>
+    <string name="set_drawer_cols">Colonne del menu app</string>
+    <string name="set_iconpack">Pacchetto di icone</string>
+    <string name="auto">Automatico</string>
+    <string name="default_icons">Sistema</string>
+    <string name="no_icon_packs">Nessun pacchetto di icone installato</string>
+    <string name="search_hint">Cerca app</string>
+    <string name="set_font">Dimensione carattere</string>
+    <string name="font_small">Piccolo</string>
+    <string name="font_normal">Normale</string>
+    <string name="font_large">Grande</string>
+    <string name="font_huge">Molto grande</string>
+</resources>

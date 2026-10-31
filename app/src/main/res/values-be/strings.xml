@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Хатні экран</string>
+    <string name="menu_widget">Дадаць віджэт</string>
+    <string name="menu_wallpaper">Шпалеры</string>
+    <string name="remove">Выдаліць</string>
+    <string name="app_info">Пра праграму</string>
+    <string name="no_space">На хатнім экране няма месца</string>
+    <string name="app_not_found">Праграму не знойдзена</string>
+    <string name="hint">Правядзіце ўверх: усе праграмы. Доўгае націсканне: віджэты, шпалеры, перамяшчэнне значкоў.</string>
+    <string name="menu_settings">Налады</string>
+    <string name="set_grid">Сетка хатняга экрана</string>
+    <string name="set_drawer_cols">Калонкі ў меню праграм</string>
+    <string name="set_iconpack">Набор значкоў</string>
+    <string name="auto">Аўта</string>
+    <string name="default_icons">Сістэмныя</string>
+    <string name="no_icon_packs">Наборы значкоў не ўсталяваныя</string>
+    <string name="search_hint">Пошук праграм</string>
+    <string name="set_font">Памер шрыфту</string>
+    <string name="font_small">Малы</string>
+    <string name="font_normal">Звычайны</string>
+    <string name="font_large">Вялікі</string>
+    <string name="font_huge">Вельмі вялікі</string>
+</resources>

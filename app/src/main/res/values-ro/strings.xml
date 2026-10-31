@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Ecran de pornire</string>
+    <string name="menu_widget">Adaugă widget</string>
+    <string name="menu_wallpaper">Fundal</string>
+    <string name="remove">Elimină</string>
+    <string name="app_info">Informații despre aplicație</string>
+    <string name="no_space">Nu mai este loc pe ecranul de pornire</string>
+    <string name="app_not_found">Aplicația nu a fost găsită</string>
+    <string name="hint">Glisați în sus: toate aplicațiile. Apăsare lungă: widgeturi, fundal, mutarea pictogramelor.</string>
+    <string name="menu_settings">Setări</string>
+    <string name="set_grid">Grila ecranului de pornire</string>
+    <string name="set_drawer_cols">Coloane în meniul de aplicații</string>
+    <string name="set_iconpack">Pachet de pictograme</string>
+    <string name="auto">Automat</string>
+    <string name="default_icons">Sistem</string>
+    <string name="no_icon_packs">Nu este instalat niciun pachet de pictograme</string>
+    <string name="search_hint">Căutare aplicații</string>
+    <string name="set_font">Dimensiunea fontului</string>
+    <string name="font_small">Mică</string>
+    <string name="font_normal">Normală</string>
+    <string name="font_large">Mare</string>
+    <string name="font_huge">Foarte mare</string>
+</resources>

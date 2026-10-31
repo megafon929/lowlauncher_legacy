@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_title">Kezdőképernyő</string>
+    <string name="menu_widget">Widget hozzáadása</string>
+    <string name="menu_wallpaper">Háttérkép</string>
+    <string name="remove">Eltávolítás</string>
+    <string name="app_info">Alkalmazásinfó</string>
+    <string name="no_space">Nincs hely a kezdőképernyőn</string>
+    <string name="app_not_found">Az alkalmazás nem található</string>
+    <string name="hint">Csúsztatás felfelé: összes alkalmazás. Hosszú érintés: widgetek, háttérkép, ikonok mozgatása.</string>
+    <string name="menu_settings">Beállítások</string>
+    <string name="set_grid">Kezdőképernyő rácsa</string>
+    <string name="set_drawer_cols">Oszlopok az alkalmazásmenüben</string>
+    <string name="set_iconpack">Ikoncsomag</string>
+    <string name="auto">Automatikus</string>
+    <string name="default_icons">Rendszer</string>
+    <string name="no_icon_packs">Nincs telepített ikoncsomag</string>
+    <string name="search_hint">Alkalmazások keresése</string>
+    <string name="set_font">Betűméret</string>
+    <string name="font_small">Kicsi</string>
+    <string name="font_normal">Normál</string>
+    <string name="font_large">Nagy</string>
+    <string name="font_huge">Nagyon nagy</string>
+</resources>
