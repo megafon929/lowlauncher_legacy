@@ -21,7 +21,7 @@ import android.widget.TextView;
  */
 @SuppressWarnings("deprecation")
 final class DragLayer extends FrameLayout {
-    static final int SRC_WORKSPACE = 0, SRC_DOCK = 1, SRC_DRAWER = 2;
+    static final int SRC_WORKSPACE = 0, SRC_DOCK = 1, SRC_DRAWER = 2, SRC_FOLDER = 3;
 
     static final class DragState {
         ItemInfo info;
@@ -29,6 +29,8 @@ final class DragLayer extends FrameLayout {
         int source;
         int spanX = 1, spanY = 1;
         float offX, offY;
+        /** Для SRC_FOLDER: папка, из которой вынимают значок. */
+        View folderView;
     }
 
     private static final int ST_CLOSED = 0, ST_OPEN = 1, ST_BUSY = 2;
@@ -62,6 +64,7 @@ final class DragLayer extends FrameLayout {
     private int dockSlot = -1;
     private CellLayout targetPage;
     private boolean haveCell, overTrash, overAbout;
+    private View folderTarget;
     private int edgeDir;
 
     private final Runnable edgeRunnable = new Runnable() {
@@ -139,6 +142,7 @@ final class DragLayer extends FrameLayout {
         } else {
             animGen++;
             drawer.animate().cancel();
+            content().animate().cancel(); // иначе недоигравшая анимация сделает рабочий стол прозрачным
             drawer.setVisibility(GONE);
             drawer.setTranslationY(getHeight());
             applyProgress(getHeight());
@@ -181,7 +185,7 @@ final class DragLayer extends FrameLayout {
 
     /** Свайп возможен, если меню не анимируется и касание не у полосы быстрой прокрутки списка. */
     private boolean canStartSwipe(MotionEvent ev) {
-        if (drawerState == ST_BUSY) return false;
+        if (drawerState == ST_BUSY || l.isFolderOpen()) return false;
         return !(drawerState == ST_OPEN && ev.getX() > getWidth() - thumbZone);
     }
 
@@ -420,6 +424,7 @@ final class DragLayer extends FrameLayout {
         targetPage = null;
         haveCell = false;
         dockSlot = -1;
+        folderTarget = null;
         overTrash = false;
         overAbout = false;
     }
@@ -451,7 +456,16 @@ final class DragLayer extends FrameLayout {
             cl.getLocationOnScreen(tmp);
             float cx = x - d.offX + dragW / 2f - tmp[0];
             float cy = y - d.offY + dragH / 2f - tmp[1];
-            if (cl.nearestFree(cx, cy, d.spanX, d.spanY, d.view, cell)) {
+            // значок, вынимаемый из папки, не должен считать целью саму эту папку
+            View skip = d.source == SRC_FOLDER && d.folderView != null ? d.folderView : d.view;
+            View ft = d.info.type == ItemInfo.APP ? cl.folderTargetAt(cx, cy, skip, d.info.component) : null;
+            if (ft != null) {
+                // значок над значком/папкой: бросок создаст папку или добавит в неё
+                folderTarget = ft;
+                targetPage = cl;
+                CellLayout.LP flp = (CellLayout.LP) ft.getLayoutParams();
+                cl.showHighlight(flp.cellX, flp.cellY, 1, 1);
+            } else if (cl.nearestFree(cx, cy, d.spanX, d.spanY, d.view, cell)) {
                 targetPage = cl;
                 haveCell = true;
                 cl.showHighlight(cell[0], cell[1], d.spanX, d.spanY);
@@ -480,9 +494,11 @@ final class DragLayer extends FrameLayout {
             if (overAbout) {
                 l.showAppInfo(d.info.component);
             } else if (overTrash) {
-                ok = l.removeItem(d.view);
+                ok = l.removeDragged(d);
             } else if (dockSlot >= 0) {
                 ok = l.dropOnDock(d, dockSlot);
+            } else if (folderTarget != null) {
+                ok = l.dropOnFolder(d, folderTarget);
             } else if (haveCell) {
                 ok = l.dropOnWorkspace(d, targetPage, cell[0], cell[1]);
             }

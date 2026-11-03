@@ -21,4 +21,5 @@
     <string name="font_normal">معمولی</string>
     <string name="font_large">بزرگ</string>
     <string name="font_huge">خیلی بزرگ</string>
+    <string name="folder_default">پوشه</string>
 </resources>

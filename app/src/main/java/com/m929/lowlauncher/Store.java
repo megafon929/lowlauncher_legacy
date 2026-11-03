@@ -63,6 +63,18 @@ final class Store {
                     it.spanY = Integer.parseInt(f[5]);
                     it.appWidgetId = Integer.parseInt(f[6]);
                     out.add(it);
+                } else if (f[0].equals("F")) {
+                    ItemInfo it = new ItemInfo(ItemInfo.FOLDER);
+                    it.page = Integer.parseInt(f[1]);
+                    it.cellX = Integer.parseInt(f[2]);
+                    it.cellY = Integer.parseInt(f[3]);
+                    it.title = f.length > 4 ? f[4] : "";
+                    String[] cs = f.length > 5 ? f[5].split(",") : new String[0];
+                    for (int k = 0; k < cs.length; k++) {
+                        ComponentName cn = ComponentName.unflattenFromString(cs[k]);
+                        if (cn != null) it.apps.add(cn);
+                    }
+                    out.add(it);
                 }
             } catch (RuntimeException e) {
                 // битая строка — пропускаем
@@ -88,6 +100,14 @@ final class Store {
             if (it.type == ItemInfo.APP) {
                 sb.append("A|").append(it.page).append('|').append(it.cellX).append('|')
                         .append(it.cellY).append('|').append(it.component.flattenToString());
+            } else if (it.type == ItemInfo.FOLDER) {
+                sb.append("F|").append(it.page).append('|').append(it.cellX).append('|')
+                        .append(it.cellY).append('|')
+                        .append(it.title.replace('|', ' ').replace('\n', ' ').replace('\r', ' ')).append('|');
+                for (int k = 0; k < it.apps.size(); k++) {
+                    if (k > 0) sb.append(',');
+                    sb.append(it.apps.get(k).flattenToString());
+                }
             } else {
                 sb.append("W|").append(it.page).append('|').append(it.cellX).append('|')
                         .append(it.cellY).append('|').append(it.spanX).append('|')

@@ -21,4 +21,5 @@
     <string name="font_normal">Normal</string>
     <string name="font_large">Büyük</string>
     <string name="font_huge">Çok büyük</string>
+    <string name="folder_default">Klasör</string>
 </resources>

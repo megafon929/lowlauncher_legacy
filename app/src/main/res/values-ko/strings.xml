@@ -21,4 +21,5 @@
     <string name="font_normal">보통</string>
     <string name="font_large">크게</string>
     <string name="font_huge">매우 크게</string>
+    <string name="folder_default">폴더</string>
 </resources>

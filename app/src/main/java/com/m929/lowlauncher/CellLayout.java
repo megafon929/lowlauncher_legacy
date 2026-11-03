@@ -29,7 +29,7 @@ final class CellLayout extends ViewGroup {
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rect = new RectF();
     private final float radius, inset;
-    private boolean hl, hlValid;
+    private boolean hl;
     private int hx, hy, hsx, hsy;
     private ResizeFrame frame;
 
@@ -148,6 +148,28 @@ final class CellLayout extends ViewGroup {
             }
         }
         return found;
+    }
+
+    /**
+     * Значок или папка (1x1), в центральной части ячейки под точкой (cx, cy) — цель для создания папки
+     * или добавления в неё. Виджеты и край ячейки не считаются.
+     */
+    View folderTargetAt(float cx, float cy, View ignore, android.content.ComponentName self) {
+        int x = (int) Math.floor((cx - padL) / cellW);
+        int y = (int) Math.floor((cy - padT) / cellH);
+        if (x < 0 || y < 0 || x >= cols || y >= rows) return null;
+        float mx = padL + (x + 0.5f) * cellW, my = padT + (y + 0.5f) * cellH;
+        if (Math.abs(cx - mx) > cellW * 0.35f || Math.abs(cy - my) > cellH * 0.35f) return null;
+        for (int i = 0; i < getChildCount(); i++) {
+            View c = getChildAt(i);
+            if (c == ignore || c == frame || !(c.getTag() instanceof ItemInfo)) continue;
+            ItemInfo it = (ItemInfo) c.getTag();
+            if (it.type == ItemInfo.WIDGET) continue;
+            if (it.type == ItemInfo.APP && self != null && self.equals(it.component)) continue;
+            LP lp = (LP) c.getLayoutParams();
+            if (lp.cellX == x && lp.cellY == y) return c;
+        }
+        return null;
     }
 
     /** Первое свободное место (по строкам). */

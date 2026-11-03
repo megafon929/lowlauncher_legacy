@@ -8,4 +8,6 @@ final class AppInfo {
     String label;
     ComponentName component;
     Drawable icon;
+    /** Отпечаток APK: при обновлении приложения меняется, и значок/название перечитываются. */
+    long stamp;
 }

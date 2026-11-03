@@ -42,13 +42,20 @@ final class IconView extends TextView {
         setBackgroundDrawable(bg);
     }
 
+    void bindFolder(String title, android.graphics.drawable.Drawable d) {
+        setCompoundDrawables(null, d, null, null);
+        setText(withLabel ? title : "");
+    }
+
     void bind(AppInfo a) {
         if (a == null) {
             setCompoundDrawables(null, null, null, null);
             setText("");
+            setContentDescription(null);
             return;
         }
         setCompoundDrawables(null, a.icon, null, null);
         setText(withLabel ? a.label : "");
+        if (!withLabel) setContentDescription(a.label); // Dock без подписи: для озвучки (TalkBack)
     }
 }

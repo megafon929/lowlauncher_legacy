@@ -21,4 +21,5 @@
     <string name="font_normal">Normaali</string>
     <string name="font_large">Suuri</string>
     <string name="font_huge">Erittäin suuri</string>
+    <string name="folder_default">Kansio</string>
 </resources>

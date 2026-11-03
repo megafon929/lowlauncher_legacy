@@ -21,4 +21,5 @@
     <string name="font_normal">Звычайны</string>
     <string name="font_large">Вялікі</string>
     <string name="font_huge">Вельмі вялікі</string>
+    <string name="folder_default">Папка</string>
 </resources>

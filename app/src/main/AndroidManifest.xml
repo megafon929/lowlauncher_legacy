@@ -18,6 +18,7 @@
             android:exported="true"
             android:hardwareAccelerated="true"
             android:launchMode="singleTask"
+            android:resizeableActivity="false"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateHidden|adjustPan">

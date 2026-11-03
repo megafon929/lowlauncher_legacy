@@ -21,4 +21,5 @@
     <string name="font_normal">Bình thường</string>
     <string name="font_large">Lớn</string>
     <string name="font_huge">Rất lớn</string>
+    <string name="folder_default">Thư mục</string>
 </resources>

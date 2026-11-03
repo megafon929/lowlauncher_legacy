@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -33,7 +34,7 @@ import java.util.HashSet;
 /** Главная активность лаунчера: рабочий стол, Dock, меню приложений, виджеты. */
 @SuppressWarnings("deprecation")
 public final class Launcher extends Activity {
-    private static final int REQ_PICK = 1, REQ_CONFIG = 2;
+    private static final int REQ_PICK = 1, REQ_CONFIG = 2, REQ_BIND = 3;
     private static final int HOST_ID = 1024;
 
     private final Handler handler = new Handler();
@@ -59,6 +60,18 @@ public final class Launcher extends Activity {
     private int pendingPage;
     private CellLayout frameOwner;
     private boolean receiversOn;
+    private FolderPopup folderPopup;
+    /**
+     * Элементы, чьи приложения сейчас недоступны (карта памяти, система ещё грузится, приложение отключено)
+     * или не поместились после уменьшения сетки. На экране их нет, но из сохранённых данных они не стираются
+     * и возвращаются на место, когда приложение снова находится.
+     */
+    private final ArrayList<ItemInfo> ghosts = new ArrayList<ItemInfo>();
+    /** То же для Dock: недоступное приложение освобождает слот на экране, но запоминается в данных. */
+    private final ComponentName[] dockGhosts = new ComponentName[Dock.SLOTS];
+    /** Пакеты, удалённые на наших глазах (PACKAGE_REMOVED без REPLACING): их значки не сохраняются. */
+    private final HashSet<String> removedPkgs = new HashSet<String>();
+    private int emptyRetries;
 
     private static final class WidgetHost extends AppWidgetHost {
         WidgetHost(Context c, int id) {
@@ -76,7 +89,10 @@ public final class Launcher extends Activity {
     private final View.OnClickListener iconClick = new View.OnClickListener() {
         public void onClick(View v) {
             Object t = v.getTag();
-            if (t instanceof ItemInfo) launch(((ItemInfo) t).component);
+            if (!(t instanceof ItemInfo)) return;
+            ItemInfo it = (ItemInfo) t;
+            if (it.type == ItemInfo.FOLDER) openFolder(it);
+            else launch(it.component);
         }
     };
 
@@ -141,6 +157,15 @@ public final class Launcher extends Activity {
     private final BroadcastReceiver pkgReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context c, Intent i) {
+            String pkg = i.getData() != null ? i.getData().getSchemeSpecificPart() : null;
+            if (Intent.ACTION_PACKAGE_REMOVED.equals(i.getAction())) {
+                if (i.getBooleanExtra(Intent.EXTRA_REPLACING, false)) {
+                    return; // обновление: сразу следом придёт ADDED, иначе значки на миг пропали бы
+                }
+                if (pkg != null) removedPkgs.add(pkg);
+            } else if (Intent.ACTION_PACKAGE_ADDED.equals(i.getAction()) && pkg != null) {
+                removedPkgs.remove(pkg);
+            }
             handler.removeCallbacks(reloadRunnable);
             handler.postDelayed(reloadRunnable, 700);
         }
@@ -202,6 +227,7 @@ public final class Launcher extends Activity {
         boolean alreadyOnHome = (intent.getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
                 != Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
         root.cancelDrag();
+        folderPopup.close();
         dismissFrame();
         if (root.isDrawerOpen()) {
             root.closeDrawer(false);
@@ -214,6 +240,8 @@ public final class Launcher extends Activity {
     public void onBackPressed() {
         if (root.isDragging()) {
             root.cancelDrag();
+        } else if (folderPopup.isOpen()) {
+            folderPopup.close();
         } else if (frameOwner != null) {
             dismissFrame();
         } else if (root.isDrawerOpen()) {
@@ -264,6 +292,10 @@ public final class Launcher extends Activity {
         root.addView(drawer, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
+        folderPopup = new FolderPopup(this, folderHost, model.iconSize());
+        root.addView(folderPopup, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
         LinearLayout barLayout = new LinearLayout(this);
         barLayout.setOrientation(LinearLayout.HORIZONTAL);
         aboutTv = makeBarText(R.string.app_info);
@@ -312,8 +344,19 @@ public final class Launcher extends Activity {
             @Override
             protected void onPostExecute(LauncherModel.Apps a) {
                 if (isFinishing() || destroyed) return;
-                if (a.list.isEmpty() && apps != null) return; // подозрительно пустой список (SD-карта)
-                boolean same = old != null && old.map.keySet().equals(a.map.keySet());
+                if (a.list.isEmpty()) {
+                    // система ещё не отдала список приложений (загрузка, карта памяти) — раскладку не трогаем
+                    if (emptyRetries < 5) {
+                        emptyRetries++;
+                        handler.removeCallbacks(reloadRunnable);
+                        handler.postDelayed(reloadRunnable, 2000);
+                        return;
+                    }
+                    if (apps != null) return;
+                } else {
+                    emptyRetries = 0;
+                }
+                boolean same = old != null && !a.changed && old.map.keySet().equals(a.map.keySet());
                 apps = a;
                 drawer.setApps(a.list);
                 if (!same) rebuildHome();
@@ -342,6 +385,24 @@ public final class Launcher extends Activity {
         return v;
     }
 
+    private View createFolderView(ItemInfo it) {
+        IconView v = new IconView(this, true);
+        v.setTag(it);
+        refreshFolderView(v, it);
+        v.setOnClickListener(iconClick);
+        v.setOnLongClickListener(workspaceLongClick);
+        return v;
+    }
+
+    private void refreshFolderView(IconView v, ItemInfo it) {
+        ArrayList<android.graphics.drawable.Drawable> icons = new ArrayList<android.graphics.drawable.Drawable>();
+        for (int i = 0; i < it.apps.size() && icons.size() < 4; i++) {
+            AppInfo a = appFor(it.apps.get(i));
+            if (a != null) icons.add(a.icon);
+        }
+        v.bindFolder(it.title, new FolderDrawable(icons, model.iconSize()));
+    }
+
     private View createWidgetView(ItemInfo it, AppWidgetProviderInfo info) {
         AppWidgetHostView hv = host.createView(this, it.appWidgetId, info);
         hv.setTag(it);
@@ -351,16 +412,44 @@ public final class Launcher extends Activity {
 
     /** Строит рабочий стол и Dock из сохранённых данных. */
     private void rebuildHome() {
+        root.cancelDrag();      // виды сейчас будут пересозданы — перетаскиваемый станет недействительным
+        folderPopup.close();
         dismissFrame();
         for (int i = 0; i < workspace.getPageCount(); i++) workspace.getPage(i).removeAllViews();
+        ghosts.clear();
 
         ArrayList<ItemInfo> items = store.loadItems();
         for (int n = 0; n < items.size(); n++) {
             ItemInfo it = items.get(n);
             View v;
-            if (it.type == ItemInfo.APP) {
+            if (it.type == ItemInfo.FOLDER) {
+                // приложения, удалённые на наших глазах, из папки убираем; недоступные пока — оставляем в данных
+                for (int k = it.apps.size() - 1; k >= 0; k--) {
+                    if (isRemoved(it.apps.get(k))) it.apps.remove(k);
+                }
+                if (it.apps.isEmpty()) continue;
+                int visible = 0;
+                for (int k = 0; k < it.apps.size(); k++) {
+                    if (appFor(it.apps.get(k)) != null) visible++;
+                }
+                if (it.title.trim().length() == 0) it.title = getString(R.string.folder_default);
+                if (visible == 0) {
+                    ghosts.add(it);
+                    continue;
+                }
+                if (it.apps.size() == 1) {
+                    v = createIcon(appFor(it.apps.get(0)));
+                } else {
+                    v = createFolderView(it);
+                }
+                it.spanX = 1;
+                it.spanY = 1;
+            } else if (it.type == ItemInfo.APP) {
                 AppInfo a = appFor(it.component);
-                if (a == null) continue;
+                if (a == null) {
+                    if (!isRemoved(it.component)) ghosts.add(it);
+                    continue;
+                }
                 v = createIcon(a);
                 it.spanX = 1;
                 it.spanY = 1;
@@ -388,6 +477,7 @@ public final class Launcher extends Activity {
                 }
                 if (!placed) {
                     if (it.type == ItemInfo.WIDGET) host.deleteAppWidgetId(it.appWidgetId);
+                    else ghosts.add(it); // нет места (например, сетку уменьшили): значок не теряем
                     continue;
                 }
             }
@@ -403,10 +493,15 @@ public final class Launcher extends Activity {
     private ComponentName[] resolveDock() {
         ComponentName[] saved = store.loadDock();
         HashSet<ComponentName> used = new HashSet<ComponentName>();
+        java.util.Arrays.fill(dockGhosts, null);
         for (int i = 0; i < saved.length; i++) {
-            if (saved[i] != null && appFor(saved[i]) != null && !used.contains(saved[i])) {
-                used.add(saved[i]);
+            ComponentName cn = saved[i];
+            if (cn == null) continue;
+            AppInfo ai = appFor(cn);
+            if (ai != null && !used.contains(cn)) {
+                used.add(cn);
             } else {
+                if (ai == null && !isRemoved(cn)) dockGhosts[i] = cn; // недоступно сейчас — запоминаем место
                 saved[i] = null;
             }
         }
@@ -433,10 +528,15 @@ public final class Launcher extends Activity {
             }
             if (cn != null) {
                 saved[i] = cn;
+                dockGhosts[i] = null;
                 used.add(cn);
             }
         }
         return saved;
+    }
+
+    private boolean isRemoved(ComponentName cn) {
+        return cn != null && removedPkgs.contains(cn.getPackageName());
     }
 
     void saveAll() {
@@ -458,7 +558,12 @@ public final class Launcher extends Activity {
                 out.add(it);
             }
         }
-        store.save(out, dock.components());
+        out.addAll(ghosts);
+        ComponentName[] dc = dock.components();
+        for (int i = 0; i < dc.length; i++) {
+            if (dc[i] == null) dc[i] = dockGhosts[i];
+        }
+        store.save(out, dc);
     }
 
     /** Открывает шторку уведомлений (скрытый API StatusBarManager, нужно разрешение EXPAND_STATUS_BAR). */
@@ -522,7 +627,7 @@ public final class Launcher extends Activity {
             lp.cellX = x;
             lp.cellY = y;
             if (parent != cl) {
-                parent.removeView(v);
+                if (parent != null) parent.removeView(v);
                 cl.addView(v, lp);
             } else {
                 cl.requestLayout();
@@ -538,6 +643,7 @@ public final class Launcher extends Activity {
                 d.view.setVisibility(View.VISIBLE);
             }
             cl.addItem(createIcon(a), x, y, 1, 1);
+            if (d.source == DragLayer.SRC_FOLDER) removeFromFolder(d);
         }
         saveAll();
         return true;
@@ -566,9 +672,157 @@ public final class Launcher extends Activity {
                 removeItem(d.view);
             }
         }
+        // приложение уже стоит в другом месте Dock — переносим, а не дублируем (после перезапуска дубли всё равно исчезали)
+        for (int i = 0; i < Dock.SLOTS; i++) {
+            if (i != slot && a.component.equals(dock.get(i))) dock.set(i, null);
+        }
+        dockGhosts[slot] = null;
         dock.set(slot, a);
+        if (d.source == DragLayer.SRC_FOLDER) removeFromFolder(d);
         saveAll();
         return true;
+    }
+
+    // ---- папки --------------------------------------------------------------------------------
+
+    private final FolderPopup.Host folderHost = new FolderPopup.Host() {
+        public AppInfo appFor(ComponentName cn) {
+            return Launcher.this.appFor(cn);
+        }
+
+        public void onOpenApp(ComponentName cn) {
+            folderPopup.close();
+            launch(cn);
+        }
+
+        public boolean onDragOut(View v, ItemInfo folder, ComponentName cn) {
+            View fv = findFolderView(folder);
+            if (fv == null) return false;
+            ItemInfo it = new ItemInfo(ItemInfo.APP);
+            it.component = cn;
+            DragLayer.DragState d = new DragLayer.DragState();
+            d.info = it;
+            d.view = v;
+            d.source = DragLayer.SRC_FOLDER;
+            d.folderView = fv;
+            folderPopup.setVisibility(View.INVISIBLE); // скрыть окно, но не уничтожать значок под пальцем
+            if (!root.startDrag(v, d)) {
+                folderPopup.setVisibility(View.VISIBLE);
+                return false;
+            }
+            return true;
+        }
+
+        public void onTitleChanged(ItemInfo folder, String title) {
+            title = title.trim();
+            folder.title = title.length() == 0 ? getString(R.string.folder_default) : title;
+            View fv = findFolderView(folder);
+            if (fv instanceof IconView) refreshFolderView((IconView) fv, folder);
+            saveAll();
+        }
+    };
+
+    boolean isFolderOpen() {
+        return folderPopup != null && folderPopup.isOpen();
+    }
+
+    private void openFolder(ItemInfo it) {
+        dismissFrame();
+        folderPopup.open(it);
+    }
+
+    private View findFolderView(ItemInfo f) {
+        for (int p = 0; p < workspace.getPageCount(); p++) {
+            CellLayout cl = workspace.getPage(p);
+            for (int i = 0; i < cl.getChildCount(); i++) {
+                if (cl.getChildAt(i).getTag() == f) return cl.getChildAt(i);
+            }
+        }
+        return null;
+    }
+
+    /** Значок сброшен на значок или папку: создаём папку либо добавляем в существующую. */
+    boolean dropOnFolder(DragLayer.DragState d, View target) {
+        if (d.info.type != ItemInfo.APP || d.info.component == null) return false;
+        Object t = target.getTag();
+        if (!(t instanceof ItemInfo) || target == d.view || target == d.folderView) return false;
+        ItemInfo ti = (ItemInfo) t;
+        ComponentName moved = d.info.component;
+        if (appFor(moved) == null) return false;
+        ItemInfo folder;
+        if (ti.type == ItemInfo.FOLDER) {
+            folder = ti;
+            if (!folder.apps.contains(moved)) folder.apps.add(moved);
+            refreshFolderView((IconView) target, folder);
+        } else if (ti.type == ItemInfo.APP && ti.component != null) {
+            if (ti.component.equals(moved)) return false;
+            CellLayout cl = (CellLayout) target.getParent();
+            CellLayout.LP lp = (CellLayout.LP) target.getLayoutParams();
+            folder = new ItemInfo(ItemInfo.FOLDER);
+            folder.title = getString(R.string.folder_default);
+            folder.apps.add(ti.component);
+            folder.apps.add(moved);
+            int x = lp.cellX, y = lp.cellY;
+            cl.removeView(target);
+            cl.addItem(createFolderView(folder), x, y, 1, 1);
+        } else {
+            return false;
+        }
+        // убрать значок из прежнего места
+        if (d.source == DragLayer.SRC_WORKSPACE) {
+            ViewGroup p = (ViewGroup) d.view.getParent();
+            if (p != null) p.removeView(d.view);
+        } else if (d.source == DragLayer.SRC_DOCK) {
+            store.putInt("dockEdited", 1);
+            dock.set(d.info.dockSlot, null);
+            d.view.setVisibility(View.VISIBLE);
+        } else if (d.source == DragLayer.SRC_FOLDER) {
+            removeFromFolder(d);
+        }
+        saveAll();
+        return true;
+    }
+
+    /** Значок вынут из папки и положен в другое место: убрать его из папки, при необходимости упростить папку. */
+    private void removeFromFolder(DragLayer.DragState d) {
+        folderPopup.close();
+        View fv = d.folderView;
+        if (fv == null || !(fv.getTag() instanceof ItemInfo)) return;
+        ItemInfo f = (ItemInfo) fv.getTag();
+        f.apps.remove(d.info.component);
+        ViewGroup parent = (ViewGroup) fv.getParent();
+        if (parent == null) return;
+        int visible = 0;
+        for (int i = 0; i < f.apps.size(); i++) {
+            if (appFor(f.apps.get(i)) != null) visible++;
+        }
+        if (visible >= 1 && f.apps.size() >= 2) {
+            refreshFolderView((IconView) fv, f);
+            return;
+        }
+        CellLayout.LP lp = (CellLayout.LP) fv.getLayoutParams();
+        int x = lp.cellX, y = lp.cellY;
+        parent.removeView(fv);
+        if (f.apps.isEmpty()) return;
+        if (visible == 0) {
+            // остались только недоступные приложения: папку прячем, но данные сохраняем
+            f.page = workspace.indexOfChild(parent);
+            f.cellX = x;
+            f.cellY = y;
+            ghosts.add(f);
+        } else {
+            ((CellLayout) parent).addItem(createIcon(appFor(f.apps.get(0))), x, y, 1, 1);
+        }
+    }
+
+    /** Бросок в «Удалить»: из папки убирает значок (приложение не удаляется), иначе удаляет элемент. */
+    boolean removeDragged(DragLayer.DragState d) {
+        if (d.source == DragLayer.SRC_FOLDER) {
+            removeFromFolder(d);
+            saveAll();
+            return true;
+        }
+        return removeItem(d.view);
     }
 
     boolean removeItem(View v) {
@@ -590,6 +844,10 @@ public final class Launcher extends Activity {
     }
 
     void onDragCancelled(DragLayer.DragState d) {
+        if (d.source == DragLayer.SRC_FOLDER) {
+            folderPopup.close();
+            return;
+        }
         if (d.source != DragLayer.SRC_DRAWER && d.view != null) d.view.setVisibility(View.VISIBLE);
     }
 
@@ -783,6 +1041,10 @@ public final class Launcher extends Activity {
 
     private void startAddWidget() {
         discardPendingWidget();
+        if (Build.VERSION.SDK_INT >= 16) {
+            showWidgetList();
+            return;
+        }
         pendingWidgetId = host.allocateAppWidgetId();
         Intent pick = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
         pick.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, pendingWidgetId);
@@ -797,6 +1059,97 @@ public final class Launcher extends Activity {
         }
     }
 
+    /**
+     * Android 4.1+: системный выбор виджетов для стороннего лаунчера ненадёжен, поэтому свой список
+     * и привязка через AppWidgetManager (при необходимости — с запросом разрешения у системы).
+     */
+    @SuppressWarnings("NewApi") // вызывается только при SDK_INT >= 16
+    private void showWidgetList() {
+        final java.util.List<AppWidgetProviderInfo> list =
+                new ArrayList<AppWidgetProviderInfo>(awm.getInstalledProviders());
+        final android.content.pm.PackageManager pm = getPackageManager();
+        final java.util.HashMap<AppWidgetProviderInfo, String> names =
+                new java.util.HashMap<AppWidgetProviderInfo, String>();
+        for (int i = 0; i < list.size(); i++) {
+            AppWidgetProviderInfo p = list.get(i);
+            if (Build.VERSION.SDK_INT >= 17
+                    && (p.widgetCategory & AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN) == 0) {
+                list.remove(i--); // виджеты только для экрана блокировки
+                continue;
+            }
+            String app;
+            try {
+                app = String.valueOf(pm.getApplicationLabel(pm.getApplicationInfo(p.provider.getPackageName(), 0)));
+            } catch (android.content.pm.PackageManager.NameNotFoundException e) {
+                app = p.provider.getPackageName();
+            }
+            names.put(p, app + " — " + widgetLabel(p, pm));
+        }
+        java.util.Collections.sort(list, new java.util.Comparator<AppWidgetProviderInfo>() {
+            public int compare(AppWidgetProviderInfo a, AppWidgetProviderInfo b) {
+                return String.CASE_INSENSITIVE_ORDER.compare(names.get(a), names.get(b));
+            }
+        });
+        CharSequence[] items = new CharSequence[list.size()];
+        for (int i = 0; i < items.length; i++) items[i] = names.get(list.get(i));
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.menu_widget)
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface d, int which) {
+                        bindWidget(list.get(which));
+                    }
+                })
+                .show();
+    }
+
+    /** Название виджета: с Android 5.0 поле label не заполняется, нужен loadLabel(). */
+    @SuppressWarnings("NewApi") // loadLabel() — только при SDK_INT >= 21
+    private static String widgetLabel(AppWidgetProviderInfo p, android.content.pm.PackageManager pm) {
+        String s = Build.VERSION.SDK_INT >= 21 ? p.loadLabel(pm) : p.label;
+        if (s == null || s.trim().length() == 0) s = p.provider.getShortClassName();
+        return s;
+    }
+
+    @SuppressWarnings("NewApi") // вызывается только при SDK_INT >= 16
+    private void bindWidget(AppWidgetProviderInfo info) {
+        pendingWidgetId = host.allocateAppWidgetId();
+        if (awm.bindAppWidgetIdIfAllowed(pendingWidgetId, info.provider)) {
+            configureOrAdd(pendingWidgetId);
+            return;
+        }
+        Intent bind = new Intent(AppWidgetManager.ACTION_APPWIDGET_BIND);
+        bind.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, pendingWidgetId);
+        bind.putExtra(AppWidgetManager.EXTRA_APPWIDGET_PROVIDER, info.provider);
+        try {
+            startActivityForResult(bind, REQ_BIND);
+        } catch (ActivityNotFoundException e) {
+            discardPendingWidget();
+            Toast.makeText(this, R.string.app_not_found, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void configureOrAdd(int id) {
+        AppWidgetProviderInfo info = awm.getAppWidgetInfo(id);
+        if (info != null && info.configure != null) {
+            try {
+                if (Build.VERSION.SDK_INT >= 16) {
+                    host.startAppWidgetConfigureActivityForResult(this, id, 0, REQ_CONFIG, null);
+                } else {
+                    Intent c = new Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE);
+                    c.setComponent(info.configure);
+                    c.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, id);
+                    startActivityForResult(c, REQ_CONFIG);
+                }
+                return;
+            } catch (ActivityNotFoundException e) {
+                // настройка недоступна — добавляем как есть
+            } catch (SecurityException e) {
+                // то же
+            }
+        }
+        addWidget(id);
+    }
+
     @Override
     protected void onActivityResult(int req, int res, Intent data) {
         if (req == REQ_PICK) {
@@ -804,24 +1157,13 @@ public final class Launcher extends Activity {
                     ? data.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, pendingWidgetId) : pendingWidgetId;
             if (res == RESULT_OK && id != -1) {
                 pendingWidgetId = id;
-                AppWidgetProviderInfo info = awm.getAppWidgetInfo(id);
-                if (info != null && info.configure != null) {
-                    Intent c = new Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE);
-                    c.setComponent(info.configure);
-                    c.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, id);
-                    try {
-                        startActivityForResult(c, REQ_CONFIG);
-                        return;
-                    } catch (ActivityNotFoundException e) {
-                        // настройка недоступна — добавляем как есть
-                    } catch (SecurityException e) {
-                        // то же
-                    }
-                }
-                addWidget(id);
+                configureOrAdd(id);
             } else {
                 discardPendingWidget();
             }
+        } else if (req == REQ_BIND) {
+            if (res == RESULT_OK && pendingWidgetId != -1) configureOrAdd(pendingWidgetId);
+            else discardPendingWidget();
         } else if (req == REQ_CONFIG) {
             if (res == RESULT_OK && pendingWidgetId != -1) addWidget(pendingWidgetId);
             else discardPendingWidget();

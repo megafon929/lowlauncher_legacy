@@ -57,6 +57,21 @@ final class HomeWidgetView extends AppWidgetHostView {
         return longPressed;
     }
 
+    /** Android 4.1+: сообщаем виджету его размер в dp, чтобы он выбрал подходящую раскладку. */
+    @Override
+    protected void onSizeChanged(int w, int h, int ow, int oh) {
+        super.onSizeChanged(w, h, ow, oh);
+        if (android.os.Build.VERSION.SDK_INT >= 16) {
+            float d = getResources().getDisplayMetrics().density;
+            int dw = (int) (w / d), dh = (int) (h / d);
+            try {
+                updateAppWidgetSize(null, dw, dh, dw, dh);
+            } catch (RuntimeException e) {
+                // не критично
+            }
+        }
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         cancelCheck();

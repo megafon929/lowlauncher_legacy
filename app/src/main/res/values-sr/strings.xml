@@ -21,4 +21,5 @@
     <string name="font_normal">Нормална</string>
     <string name="font_large">Велика</string>
     <string name="font_huge">Врло велика</string>
+    <string name="folder_default">Фасцикла</string>
 </resources>

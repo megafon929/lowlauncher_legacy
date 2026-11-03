@@ -21,4 +21,5 @@
     <string name="font_normal">רגיל</string>
     <string name="font_large">גדול</string>
     <string name="font_huge">גדול מאוד</string>
+    <string name="folder_default">תיקייה</string>
 </resources>

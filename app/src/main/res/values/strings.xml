@@ -22,4 +22,5 @@
     <string name="font_normal">Normal</string>
     <string name="font_large">Large</string>
     <string name="font_huge">Huge</string>
+    <string name="folder_default">Folder</string>
 </resources>

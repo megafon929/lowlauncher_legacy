@@ -37,6 +37,8 @@ final class LauncherModel {
         final HashMap<ComponentName, AppInfo> map = new HashMap<ComponentName, AppInfo>();
         /** Активности без LAUNCHER-категории (например, звонилка по умолчанию). Только UI-поток. */
         final HashMap<ComponentName, AppInfo> extra = new HashMap<ComponentName, AppInfo>();
+        /** true, если у какого-то из прежних приложений пришлось перечитать значок (обновление). */
+        boolean changed;
 
         AppInfo get(ComponentName cn) {
             AppInfo a = map.get(cn);
@@ -123,15 +125,16 @@ final class LauncherModel {
         }
 
         static IconPackData load(PackageManager pm, String pkg) {
+            XmlPullParser xpp = null;
+            InputStream in = null;
             try {
                 Resources res = pm.getResourcesForApplication(pkg);
-                XmlPullParser xpp = null;
                 int id = res.getIdentifier("appfilter", "xml", pkg);
                 if (id != 0) {
                     xpp = res.getXml(id);
                 } else {
                     try {
-                        InputStream in = res.getAssets().open("appfilter.xml");
+                        in = res.getAssets().open("appfilter.xml");
                         xpp = Xml.newPullParser();
                         xpp.setInput(in, "utf-8");
                     } catch (java.io.IOException e) {
@@ -148,6 +151,18 @@ final class LauncherModel {
                 return d;
             } catch (Exception e) {
                 return null;
+            } finally {
+                // освобождаем разобранный XML и поток assets (раньше они оставались открытыми до сборки мусора)
+                if (xpp instanceof android.content.res.XmlResourceParser) {
+                    ((android.content.res.XmlResourceParser) xpp).close();
+                }
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (java.io.IOException e) {
+                        // не критично
+                    }
+                }
             }
         }
 
@@ -256,6 +271,10 @@ final class LauncherModel {
             ComponentName cn = new ComponentName(ai.packageName, ai.name);
             if (out.map.containsKey(cn)) continue;
             AppInfo a = old != null ? old.map.get(cn) : null;
+            if (a != null && a.stamp != stampOf(ai)) {
+                a = null;
+                out.changed = true;
+            }
             if (a == null) a = build(ai);
             out.map.put(cn, a);
             out.list.add(a);
@@ -294,8 +313,19 @@ final class LauncherModel {
         return null;
     }
 
+    private static long stampOf(ActivityInfo ai) {
+        try {
+            String dir = ai.applicationInfo != null ? ai.applicationInfo.sourceDir : null;
+            if (dir == null) return 0;
+            return dir.hashCode() * 31L + new java.io.File(dir).lastModified();
+        } catch (RuntimeException e) {
+            return 0;
+        }
+    }
+
     private AppInfo build(ActivityInfo ai) {
         AppInfo a = new AppInfo();
+        a.stamp = stampOf(ai);
         a.component = new ComponentName(ai.packageName, ai.name);
         CharSequence l = ai.loadLabel(pm);
         a.label = l != null ? l.toString() : ai.packageName;
