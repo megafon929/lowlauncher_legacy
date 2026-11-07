@@ -1,4 +1,4 @@
-# LowLauncher v1.1 (Android 4.0.4 – 7.1, API 15–25)
+# LowLauncher v1.2 (Android 4.0.4 – 7.1, API 15–25)
 
 **English** · [Русский](README.ru.md)
 
@@ -62,12 +62,13 @@ The app name is "LowLauncher" in every language. The UI is translated into 47 lo
 Enabled in the manifest (`hardwareAccelerated`). During animations (app drawer, page scrolling, the dragged icon) views temporarily get a GPU hardware layer, which is released afterwards to save memory.
 
 ## Status
-Generated with Claude (Anthropic). Version 1.0 was tested on a real device; the 1.1 changes (folders, Android 7.1 adaptation) are compile-checked and still need testing on devices. A separate build for Android 9-17 lives in `launcher-new`.
+Concept and requirements (ТЗ) by the author; the code was generated with Claude (Anthropic). Version 1.0 was tested on a real device; the 1.1 and 1.2 changes (folders, Android 7.1 adaptation, fixes) are compile-checked and still need testing on devices. A separate build for Android 9-17 lives in `launcher-new`.
 
 ## Changelog
-- **1.1** - adaptation for Android 4.0.4 – 7.1, folders on the home screen and bug fixes.
+- **1.2** (build 3) - bug-fix release.
+  - **The layout is kept:** icons of temporarily unavailable apps (SD card, system still starting, disabled app) and icons that do not fit after shrinking the grid are no longer erased; they come back when possible.
+  - **Fixes:** no duplicates in the Dock; icons and labels refresh after app updates; correct widget names on Android 5.0+; the home screen no longer turns transparent when Home is pressed while the app drawer is opening; an empty app list at system start is retried; no blank screen after returning from the "App info" window.
+- **1.1** - adaptation for Android 4.0.4 – 7.1 and folders on the home screen.
   - **Folders:** drop an icon onto another one to create a folder; open it, rename it and drag icons out.
   - **Android 4.0.4 – 7.1** (targetSdk 25): own widget list and binding on Android 4.1+, widgets are told their size.
-  - **The layout is kept:** icons of temporarily unavailable apps (SD card, system still starting, disabled app) and icons that do not fit after shrinking the grid are no longer erased; they come back when possible.
-  - **Fixes:** no duplicates in the Dock; icons and labels refresh after app updates; correct widget names on Android 5.0+; the home screen no longer turns transparent when Home is pressed while the app drawer is opening; an empty app list at system start is retried.
 - **1.0** - first release.

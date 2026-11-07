@@ -207,6 +207,12 @@ public final class Launcher extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        root.settleDrawer();
+    }
+
+    @Override
     protected void onStop() {
         host.stopListening();
         super.onStop();

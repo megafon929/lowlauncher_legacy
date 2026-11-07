@@ -153,8 +153,33 @@ final class DragLayer extends FrameLayout {
         }
     }
 
+    /** Доигрывает анимацию меню мгновенно (например, после возврата из другого окна). */
+    void settleDrawer() {
+        if (drawerState != ST_BUSY) return;
+        animGen++;
+        drawer.animate().cancel();
+        content().animate().cancel();
+        if (animOpening) {
+            drawer.setVisibility(VISIBLE);
+            drawer.setTranslationY(0);
+            drawerState = ST_OPEN;
+            applyProgress(0);
+        } else {
+            drawer.setVisibility(GONE);
+            drawer.setTranslationY(getHeight());
+            drawer.reset();
+            drawerState = ST_CLOSED;
+            applyProgress(getHeight());
+        }
+        U.layer(drawer, false);
+        U.layer(content(), false);
+    }
+
+    private boolean animOpening;
+
     private void animateDrawer(final boolean open) {
         final int gen = ++animGen;
+        animOpening = open;
         drawer.animate().cancel();
         drawerState = ST_BUSY;
         U.layer(drawer, true);
@@ -490,8 +515,10 @@ final class DragLayer extends FrameLayout {
         DragState d = drag;
         if (d == null) return;
         boolean ok = false;
+        boolean overAboutDrop = false;
         if (drop && !(d.source == SRC_DRAWER && !moved)) {
             if (overAbout) {
+                overAboutDrop = true;
                 l.showAppInfo(d.info.component);
             } else if (overTrash) {
                 ok = l.removeDragged(d);
@@ -515,7 +542,10 @@ final class DragLayer extends FrameLayout {
         clearHover();
         if (!ok) {
             l.onDragCancelled(d);
-            if (d.source == SRC_DRAWER) animateDrawer(true);
+            if (d.source == SRC_DRAWER) {
+                animateDrawer(true);
+                if (overAboutDrop) settleDrawer(); // открывается другое окно: без анимации
+            }
         }
     }
 }
