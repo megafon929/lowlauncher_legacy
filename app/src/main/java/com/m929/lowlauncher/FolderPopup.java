@@ -157,6 +157,12 @@ final class FolderPopup extends FrameLayout {
         panel.requestFocus();
     }
 
+    /** Вернуть окно папки после отменённого перетаскивания значка (окно скрывалось, но не закрывалось). */
+    void restore() {
+        if (folder != null && getChildCount() > 0) setVisibility(VISIBLE);
+        else close();
+    }
+
     /** Закрыть с сохранением названия. */
     void close() {
         if (!isOpen()) return;

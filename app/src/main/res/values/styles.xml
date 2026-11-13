@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Wallpaper.NoTitleBar" />
+    <!--
+        Оформление берётся у системы (DeviceDefault), а не у Holo из Android 4.0.4:
+        меню по долгому нажатию на рабочем столе и диалоги настроек выглядят так же,
+        как на устройстве. Theme.DeviceDefault есть с API 14, поэтому при minSdk 15
+        отдельный fallback не нужен. windowBackground + windowShowWallpaper повторяют
+        Theme.*.Wallpaper, чтобы за рабочим столом оставались видны системные обои.
+    -->
+    <style name="AppTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
 </resources>

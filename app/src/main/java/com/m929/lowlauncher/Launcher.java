@@ -222,6 +222,7 @@ public final class Launcher extends Activity {
     protected void onDestroy() {
         destroyed = true;
         handler.removeCallbacks(reloadRunnable);
+        discardPendingWidget(); // иначе выделенный id виджета остаётся занятым в системе навсегда
         if (receiversOn) unregisterReceiver(pkgReceiver);
         super.onDestroy();
     }
@@ -656,9 +657,11 @@ public final class Launcher extends Activity {
     }
 
     boolean dropOnDock(DragLayer.DragState d, int slot) {
-        store.putInt("dockEdited", 1);
         AppInfo a = appFor(d.info.component);
         if (a == null) return false;
+        // флаг «Dock правили вручную» ставим только после успешной проверки: иначе неудачный
+        // бросок недоступного приложения навсегда отключал заполнение пустых слотов по умолчанию
+        store.putInt("dockEdited", 1);
         ComponentName displaced = dock.get(slot);
         AppInfo disp = appFor(displaced);
         if (d.source == DragLayer.SRC_DOCK) {
@@ -670,11 +673,12 @@ public final class Launcher extends Activity {
             dock.set(from, disp);
             d.view.setVisibility(View.VISIBLE);
         } else if (d.source == DragLayer.SRC_WORKSPACE) {
-            if (disp != null) {
+            if (disp != null && !disp.component.equals(a.component)) {
                 ((ItemInfo) d.view.getTag()).component = disp.component;
                 ((IconView) d.view).bind(disp);
                 d.view.setVisibility(View.VISIBLE);
             } else {
+                // слот уже занят этим же приложением — значок с рабочего стола просто убираем
                 removeItem(d.view);
             }
         }
@@ -851,7 +855,7 @@ public final class Launcher extends Activity {
 
     void onDragCancelled(DragLayer.DragState d) {
         if (d.source == DragLayer.SRC_FOLDER) {
-            folderPopup.close();
+            folderPopup.restore(); // отмена броска возвращает открытую папку, а не закрывает её
             return;
         }
         if (d.source != DragLayer.SRC_DRAWER && d.view != null) d.view.setVisibility(View.VISIBLE);

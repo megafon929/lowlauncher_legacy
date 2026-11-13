@@ -10,8 +10,8 @@ android {
         applicationId 'com.m929.lowlauncher'
         minSdk 15
         targetSdk 25          // Android 7.1
-        versionCode 3
-        versionName '1.2'
+        versionCode 4
+        versionName '1.3'
     }
 
     buildTypes {

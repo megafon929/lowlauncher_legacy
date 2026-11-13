@@ -1,9 +1,9 @@
-# LowLauncher v1.2 (Android 4.0.4 – 7.1, API 15–25)
+# LowLauncher v1.3 (Android 4.0.3 – 7.1, API 15–25)
 
 **English** · [Русский](README.ru.md)
 
 ## About
-LowLauncher is a lightweight launcher for Android 4.0.4 – 7.1 written in plain Java with no external libraries. Package: `com.m929.lowlauncher`.
+LowLauncher is a lightweight launcher for Android 4.0.3 – 7.1 written in plain Java with no external libraries. Package: `com.m929.lowlauncher`.
 
 - **Home screen:** configurable grid (4x4 … 5x6; 4x5 by default, 4x4 on short screens), 5 pages, drag & drop of shortcuts and system widgets (pick, place, resize, remove), long-press menu (widgets, wallpaper, settings), swipe down opens the notification shade.
 - **Folders (new in 1.1):** drop an icon onto another icon to create a folder, or onto a folder to add it. Tap a folder to open it, rename it in the title field, long-press an icon inside to drag it out (to the home screen, the Dock or "Remove"). A folder with a single app turns back into a plain icon.
@@ -11,7 +11,7 @@ LowLauncher is a lightweight launcher for Android 4.0.4 – 7.1 written in plain
 - **App drawer:** swipe up from anywhere, translucent background, search, configurable number of columns.
 - **Drag & drop:** "App info" and "Remove" zones, edge auto-scroll between pages.
 - **Settings:** grid size, drawer columns, icon pack (ADW/Nova/Apex/Go), label font size.
-- **Compatibility:** minSdk 15 (Android 4.0.3/4.0.4), targetSdk 25 (Android 7.1). On Android 4.1+ widgets are chosen from the launcher's own list and bound through AppWidgetManager; widgets are told their size.
+- **Compatibility:** minSdk 15 (Android 4.0.3), targetSdk 25 (Android 7.1). On Android 4.1+ widgets are chosen from the launcher's own list and bound through AppWidgetManager; widgets are told their size.
 - **Localization:** English, Russian and 44 more languages available in Android 4.0.4 (47 locales, see "Languages").
 - **Build:** Gradle, R8, hardware acceleration.
 
@@ -62,13 +62,16 @@ The app name is "LowLauncher" in every language. The UI is translated into 47 lo
 Enabled in the manifest (`hardwareAccelerated`). During animations (app drawer, page scrolling, the dragged icon) views temporarily get a GPU hardware layer, which is released afterwards to save memory.
 
 ## Status
-Concept and requirements (ТЗ) by the author; the code was generated with Claude (Anthropic). Version 1.0 was tested on a real device; the 1.1 and 1.2 changes (folders, Android 7.1 adaptation, fixes) are compile-checked and still need testing on devices. A separate build for Android 9-17 lives in `launcher-new`.
+Concept and requirements (ТЗ) by the author; the code was generated with Claude (Anthropic). Version 1.0 was tested on a real device; the 1.1 and 1.2 changes (folders, Android 7.1 adaptation, fixes) are compile-checked and still need testing on devices. Version 1.3 - code review, system `DeviceDefault` theme, the fixes listed below and the documentation - was prepared with the SourceCraft AI assistant on the [SourceCraft](https://sourcecraft.dev) platform.
 
 ## Changelog
+- **1.3** (build 4) - system look and bug-fix release.
+  - **System look:** menus and dialogs (long press on the home screen, "Settings", grid, font, icon pack and widget lists) follow the device theme (`DeviceDefault`) instead of the forced Holo style of Android 4.0.4. The wallpaper is still visible behind the home screen.
+  - **Fixes:** empty Dock slots are filled with the default apps again after a failed drop (the "dock edited" flag was written before validation); no duplicate icon when an app is dragged from the home screen onto the Dock slot that already holds it; a widget id is no longer leaked when the screen is recreated; cancelling a drag out of a folder keeps the folder open.
 - **1.2** (build 3) - bug-fix release.
   - **The layout is kept:** icons of temporarily unavailable apps (SD card, system still starting, disabled app) and icons that do not fit after shrinking the grid are no longer erased; they come back when possible.
   - **Fixes:** no duplicates in the Dock; icons and labels refresh after app updates; correct widget names on Android 5.0+; the home screen no longer turns transparent when Home is pressed while the app drawer is opening; an empty app list at system start is retried; no blank screen after returning from the "App info" window.
-- **1.1** - adaptation for Android 4.0.4 – 7.1 and folders on the home screen.
+- **1.1** - adaptation for Android 4.0.3 – 7.1 and folders on the home screen.
   - **Folders:** drop an icon onto another one to create a folder; open it, rename it and drag icons out.
-  - **Android 4.0.4 – 7.1** (targetSdk 25): own widget list and binding on Android 4.1+, widgets are told their size.
+  - **Android 4.0.3 – 7.1** (targetSdk 25): own widget list and binding on Android 4.1+, widgets are told their size.
 - **1.0** - first release.
